@@ -1,5 +1,5 @@
 <?php
-function ccc_register_custom_post_types()
+function ccc_register_cpt()
 {
     // Register Events 
     $labels = array(
@@ -39,18 +39,18 @@ function ccc_register_custom_post_types()
         'show_in_admin_bar'  => true,
         'show_in_rest'       => true,
         'query_var'          => true,
-        'rewrite'            => array('slug' => 'schedule'), // may need to change to work if doesn't work 
+        'rewrite'            => array('slug' => 'schedule'),
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => 5,
-        'menu_icon'          => 'dashicons-archive',
+        'menu_icon'          => 'dashicons-schedule',
         'supports'           => array('title', 'thumbnail', 'editor'),
     );
 
     register_post_type('ccc-events', $args);
 }
-add_action('init', 'ccc_register_custom_post_types');
+add_action('init', 'ccc_register_cpt');
 
 
 
@@ -159,3 +159,12 @@ function ccc_register_taxonomies()
 
 
 add_action('init', 'ccc_register_taxonomies');
+
+
+// Flush 
+function ccc_rewrite_flush()
+{
+    ccc_register_cpt();
+    flush_rewrite_rules();
+}
+add_action('after_switch_theme', 'ccc_rewrite_flush');
