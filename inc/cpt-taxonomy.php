@@ -49,6 +49,55 @@ function ccc_register_cpt()
     );
 
     register_post_type('ccc-events', $args);
+
+    //Register Sponsors
+    $labels = array(
+        'name'                  => _x('Sponsors', 'post type general name'),
+        'singular_name'         => _x('Sponsor', 'post type singular name'),
+        'menu_name'             => _x('Sponsors', 'admin menu'),
+        'name_admin_bar'        => _x('Sponsors', 'add new on admin bar'),
+        'add_new'               => _x('Add New', 'sponsor'),
+        'add_new_item'          => __('Add New Sponsor'),
+        'new_item'              => __('New Sponsors'),
+        'edit_item'             => __('Edit Sponsor'),
+        'view_item'             => __('View Sponsor'),
+        'all_items'             => __('All Sponsors'),
+        'search_items'          => __('Search Sponsors'),
+        'parent_item_colon'     => __('Parent Sponsors:'),
+        'not_found'             => __('No sponsors found.'),
+        'not_found_in_trash'    => __('No sponsors found in Trash.'),
+        'archives'              => __('Sponsor Archives'),
+        'insert_into_item'      => __('Insert into spnsor'),
+        'uploaded_to_this_item' => __('Uploaded to this spnsor'),
+        'filter_item_list'      => __('Filter sponsors list'),
+        'items_list_navigation' => __('Sponsor list navigation'),
+        'items_list'            => __('Sponsors list'),
+        'featured_image'        => __('Sponsor featured image'),
+        'set_featured_image'    => __('Set sponsor featured image'),
+        'remove_featured_image' => __('Remove sponsor featured image'),
+        'use_featured_image'    => __('Use as featured image'),
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => true,
+        'show_in_admin_bar'  => true,
+        'show_in_rest'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'sponsor'), // may need to change to work if doesn't work 
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'menu_icon'          => 'dashicons-businessperson',
+        'supports'           => array('title', 'thumbnail', 'editor'),
+    );
+
+    register_post_type('ccc-sponsors', $args);
 }
 add_action('init', 'ccc_register_cpt');
 
