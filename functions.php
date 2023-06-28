@@ -193,3 +193,22 @@ if (defined('JETPACK__VERSION')) {
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+//Block Editor Changes
+
+/**
+ * Enable classic editor for Homepage for ACF restrictions
+ */
+function ccc_editor_filter( $use_block_editor, $post ) {
+	$page_ids = array( 33, 81 );
+	if ( in_array ( $post->ID, $page_ids ) ) {
+		return false;
+	}
+	else {
+		return $use_block_editor;
+	}
+
+}
+
+add_filter( 'use_block_editor_for_post', 'ccc_editor_filter', 10, 2 );
+
