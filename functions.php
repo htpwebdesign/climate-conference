@@ -126,13 +126,13 @@ function climate_conference_widgets_init()
 {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 'climate-conference'),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__('Add widgets here.', 'climate-conference'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'name'          => esc_html__('Footer', 'climate-conference'),
+			'id'            => 'footer_widget_area',
+			'description'   => esc_html__('Adjust Widget Here', 'climate-conference'),
+			'before_widget' => '<footer id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</footer>',
+			'before_title'  => '<h3 class="footer-title">',
+			'after_title'   => '</h3>',
 		)
 	);
 }
@@ -197,7 +197,7 @@ if (class_exists('WooCommerce')) {
 //Block Editor Changes
 
 /**
- * Enable classic editor for Homepage for ACF restrictions
+ * Enable classic editor for ACF restrictions
  */
 function ccc_editor_filter( $use_block_editor, $post ) {
 	$page_ids = array( 33, 81 );
