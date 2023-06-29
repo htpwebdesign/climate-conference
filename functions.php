@@ -51,7 +51,7 @@ function climate_conference_setup()
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__('Primary', 'climate-conference'),
+			'header' => esc_html__('Main Navigation', 'climate-conference'),
 		)
 	);
 
@@ -86,6 +86,8 @@ function climate_conference_setup()
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support('customize-selective-refresh-widgets');
+
+
 
 	/**
 	 * Add support for core custom logo.
