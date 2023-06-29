@@ -88,7 +88,7 @@ function ccc_register_cpt()
         'show_in_admin_bar'  => true,
         'show_in_rest'       => true,
         'query_var'          => true,
-        'rewrite'            => array('slug' => 'sponsor'), // may need to change to work if doesn't work 
+        'rewrite'            => array('slug' => 'sponsor'),
         'capability_type'    => 'post',
         'has_archive'        => false,
         'hierarchical'       => false,
@@ -140,7 +140,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-industry-type', array('conference-events', 'conference-speakers', 'conference-sponsors'), $args);
+    register_taxonomy('conference-industry-type', array('ccc-events', 'conference-speakers', 'conference-sponsors'), $args);
 
 
     // Event Type 
@@ -171,7 +171,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-type', array('conference-events'), $args);
+    register_taxonomy('conference-event-type', array('ccc-events'), $args);
 
 
     // Schedule 
@@ -202,11 +202,8 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-taxonomy', array('conference-events'), $args);
+    register_taxonomy('conference-event-taxonomy', array('ccc-events'), $args);
 }
-
-
-
 add_action('init', 'ccc_register_taxonomies');
 
 
