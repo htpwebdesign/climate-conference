@@ -48,7 +48,7 @@ function ccc_register_cpt()
         'supports'           => array('title', 'thumbnail', 'editor'),
     );
 
-    register_post_type('ccc-events', $args);
+    register_post_type('conference-events', $args);
 }
 add_action('init', 'ccc_register_cpt');
 
@@ -137,7 +137,7 @@ function ccc_register_taxonomies()
         'update_item'       => __('Update Event'),
         'add_new_item'      => __('Add New Event'),
         'new_item_name'     => __('New Event Name'),
-        'menu_name'         => __('Event'),
+        'menu_name'         => __('Events'),
     );
 
     $args = array(
