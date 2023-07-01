@@ -46,6 +46,7 @@ function ccc_register_cpt()
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-schedule',
         'supports'           => array('title', 'thumbnail', 'editor'),
+        'order' => 'ASC',
     );
 
     register_post_type('ccc-events', $args);
