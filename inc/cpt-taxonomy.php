@@ -177,17 +177,17 @@ function ccc_register_taxonomies()
 
     // Schedule 
     $labels = array(
-        'name'              => _x('Event', 'taxonomy general name'),
-        'singular_name'     => _x('Event', 'taxonomy singular name'),
-        'search_items'      => __('Search Event'),
-        'all_items'         => __('All Event'),
-        'parent_item'       => __('Parent Event'),
-        'parent_item_colon' => __('Parent Event:'),
-        'edit_item'         => __('Edit Event'),
-        'update_item'       => __('Update Event'),
-        'add_new_item'      => __('Add New Event'),
-        'new_item_name'     => __('New Event Name'),
-        'menu_name'         => __('Event'),
+        'name'              => _x('Event Day', 'taxonomy general name'),
+        'singular_name'     => _x('Event Day', 'taxonomy singular name'),
+        'search_items'      => __('Search Event Day'),
+        'all_items'         => __('All Event Day'),
+        'parent_item'       => __('Parent Event Day'),
+        'parent_item_colon' => __('Parent Event Day:'),
+        'edit_item'         => __('Edit Event Day'),
+        'update_item'       => __('Update Event Day'),
+        'add_new_item'      => __('Add New Event Day'),
+        'new_item_name'     => __('New Event Name Day'),
+        'menu_name'         => __('Event Day'),
     );
 
     $args = array(
@@ -199,7 +199,7 @@ function ccc_register_taxonomies()
         'show_in_rest'          => true,
         'show_admin_column'     => true,
         'query_var'             => true,
-        'rewrite'               => array('slug' => 'schedule'),
+        'rewrite'               => array('slug' => 'event-day'),
     );
 
 
