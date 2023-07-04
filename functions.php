@@ -13,6 +13,10 @@ if (!defined('_S_VERSION')) {
 	define('_S_VERSION', '1.0.0');
 }
 
+// define google maps api key
+global $maps_key;
+$maps_key = getenv( 'GOOGLE_MAPS_API_KEY' );
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -20,6 +24,7 @@ if (!defined('_S_VERSION')) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
 function climate_conference_setup()
 {
 	/*
@@ -147,6 +152,12 @@ function climate_conference_scripts()
 {
 	wp_enqueue_style('climate-conference-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('climate-conference-style', 'rtl', 'replace');
+	
+	//for google maps api
+	global $maps_key;
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('google-maps', `https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype`, array(), '3', true );
+	wp_enqueue_script('google-map-init', get_template_directory_uri() . '/js/googlemaps.js', array('jquery', 'google-maps'), '3.7.0', true);
 
 	wp_enqueue_script('climate-conference-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
@@ -196,8 +207,6 @@ if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
-//Block Editor Changes
-
 /**
  * Enable classic editor for ACF restrictions
  */
@@ -214,3 +223,14 @@ function ccc_editor_filter( $use_block_editor, $post ) {
 
 add_filter( 'use_block_editor_for_post', 'ccc_editor_filter', 10, 2 );
 
+
+/**
+ * Add Google Maps API Filter
+ */
+
+ function my_acf_google_map_api( $api ){
+	global $maps_key;
+	$api['key'] = $maps_key;
+	return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');

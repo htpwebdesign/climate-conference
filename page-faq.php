@@ -10,7 +10,7 @@
  */
 
 
-require('template-parts/faq-section.php');
+require('template-parts/content-faq.php');
 
 get_header();
 ?>
