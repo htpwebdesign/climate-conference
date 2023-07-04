@@ -27,6 +27,6 @@ faq_section('about');
 
 </main><!-- #main -->
 <?php
-get_sidebar();
+
 get_footer();
 ?>
