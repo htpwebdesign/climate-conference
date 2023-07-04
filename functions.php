@@ -15,7 +15,7 @@ if (!defined('_S_VERSION')) {
 
 // define google maps api key
 global $maps_key;
-$maps_key = getenv( 'GOOGLE_MAPS_API_KEY' );
+$maps_key = getenv('GOOGLE_MAPS_API_KEY');
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -152,11 +152,11 @@ function climate_conference_scripts()
 {
 	wp_enqueue_style('climate-conference-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('climate-conference-style', 'rtl', 'replace');
-	
+
 	//for google maps api
 	global $maps_key;
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('google-maps', `https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype`, array(), '3', true );
+	wp_enqueue_script('google-maps', `https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype`, array(), '3', true);
 	wp_enqueue_script('google-map-init', get_template_directory_uri() . '/js/googlemaps.js', array('jquery', 'google-maps'), '3.7.0', true);
 
 	wp_enqueue_script('climate-conference-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
@@ -210,60 +210,61 @@ if (class_exists('WooCommerce')) {
 
 
 /*SPEAKERS*/
-function create_speakers_post_type() {
-    $labels = array(
-        'name'               => __( 'Speakers', 'text-domain' ),
-        'singular_name'      => __( 'Speaker', 'text-domain' ),
-        'add_new'            => __( 'Add New Speaker', 'text-domain' ),
-        'add_new_item'       => __( 'Add New Speaker', 'text-domain' ),
-        'edit_item'          => __( 'Edit Speaker', 'text-domain' ),
-        'new_item'           => __( 'New Speaker', 'text-domain' ),
-        'view_item'          => __( 'View Speaker', 'text-domain' ),
-        'search_items'       => __( 'Search Speakers', 'text-domain' ),
-        'not_found'          => __( 'No speakers found', 'text-domain' ),
-        'not_found_in_trash' => __( 'No speakers found in Trash', 'text-domain' ),
-        'parent_item_colon'  => __( 'Parent Speaker:', 'text-domain' ),
-        'menu_name'          => __( 'Speakers', 'text-domain' ),
-    );
+function create_speakers_post_type()
+{
+	$labels = array(
+		'name'               => __('Speakers', 'text-domain'),
+		'singular_name'      => __('Speaker', 'text-domain'),
+		'add_new'            => __('Add New Speaker', 'text-domain'),
+		'add_new_item'       => __('Add New Speaker', 'text-domain'),
+		'edit_item'          => __('Edit Speaker', 'text-domain'),
+		'new_item'           => __('New Speaker', 'text-domain'),
+		'view_item'          => __('View Speaker', 'text-domain'),
+		'search_items'       => __('Search Speakers', 'text-domain'),
+		'not_found'          => __('No speakers found', 'text-domain'),
+		'not_found_in_trash' => __('No speakers found in Trash', 'text-domain'),
+		'parent_item_colon'  => __('Parent Speaker:', 'text-domain'),
+		'menu_name'          => __('Speakers', 'text-domain'),
+	);
 
-    $args = array(
-        'labels'              => $labels,
-        'public'              => true,
-        'has_archive'         => true,
-        'publicly_queryable'  => true,
-        'query_var'           => true,
-        'rewrite'             => array( 'slug' => 'speakers' ),
-        'capability_type'     => 'post',
-        'menu_icon'           => 'dashicons-businessman',
-        'supports'            => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
-    );
+	$args = array(
+		'labels'              => $labels,
+		'public'              => true,
+		'has_archive'         => true,
+		'publicly_queryable'  => true,
+		'query_var'           => true,
+		'rewrite'             => array('slug' => 'speakers'),
+		'capability_type'     => 'post',
+		'menu_icon'           => 'dashicons-businessman',
+		'supports'            => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+	);
 
-    register_post_type( 'conference-speakers', $args );
+	register_post_type('conference-speakers', $args);
 }
-add_action( 'init', 'create_speakers_post_type' );
+add_action('init', 'create_speakers_post_type');
 
 /**
  * Enable classic editor for ACF restrictions
  */
-function ccc_editor_filter( $use_block_editor, $post ) {
-	$page_ids = array( 33, 81 );
-	if ( in_array ( $post->ID, $page_ids ) ) {
+function ccc_editor_filter($use_block_editor, $post)
+{
+	$page_ids = array(33, 81);
+	if (in_array($post->ID, $page_ids)) {
 		return false;
-	}
-	else {
+	} else {
 		return $use_block_editor;
 	}
-
 }
 
-add_filter( 'use_block_editor_for_post', 'ccc_editor_filter', 10, 2 );
+add_filter('use_block_editor_for_post', 'ccc_editor_filter', 10, 2);
 
 
 /**
  * Add Google Maps API Filter
  */
 
- function my_acf_google_map_api( $api ){
+function my_acf_google_map_api($api)
+{
 	global $maps_key;
 	$api['key'] = $maps_key;
 	return $api;

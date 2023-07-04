@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Canadian_Climate_Conference
+ * @package FWD_Starter_Theme
  */
 
 get_header();
@@ -22,51 +22,30 @@ get_header();
 			?>
 		</header><!-- .page-header -->
 
-		<?php
-		// Display events based on categories "day-1" and "day-2"
-		function display_events_by_category()
-		{
-			$args = array(
-				'post_type'      => 'schedule', // Replace 'event' with your custom post type slug
-				'tax_query'      => array(
-					array(
-						'taxonomy' => 'event-day', // Replace 'event_category' with your custom taxonomy slug
-						'field'    => 'slug',
-						'terms'    => array('day-1', 'day-2'), // Categories to display
-					),
-				),
-				'posts_per_page' => -1, // Set the number of posts to display (-1 for all)
-			);
+	<?php
+		/* Start the Loop */
+		while (have_posts()) :
+			the_post();
 
-			$events_query = new WP_Query($args);
+			/*
+				 * Include the Post-Type-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+				 */
+			get_template_part('template-parts/content', get_post_type());
 
-			// Check if there are events to display
-			if ($events_query->have_posts()) {
-				echo '<div class="event-list">';
+		endwhile;
 
-				while ($events_query->have_posts()) {
-					$events_query->the_post();
-					get_template_part('template-parts/content', 'event'); // Change 'event' to match your content template file name
-				}
+		the_posts_navigation();
 
-				echo '</div>';
-			}
+	else :
 
-			wp_reset_postdata();
-		}
+		get_template_part('template-parts/content', 'none');
 
-		// Call the function to display the events by category
-		display_events_by_category();
-		?>
+	endif;
+	?>
 
-	<?php else : ?>
-
-		<?php get_template_part('template-parts/content', 'none'); ?>
-
-	<?php endif; ?>
-
-</main><!-- #main -->
+</main><!-- #primary -->
 
 <?php
 get_footer();
-?>
