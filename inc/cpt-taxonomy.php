@@ -177,12 +177,42 @@ function ccc_register_taxonomies()
 
     // Schedule 
     $labels = array(
+        'name'              => _x('Event', 'taxonomy general name'),
+        'singular_name'     => _x('Event', 'taxonomy singular name'),
+        'search_items'      => __('Search Event'),
+        'all_items'         => __('All Event'),
+        'parent_item'       => __('Parent Event'),
+        'parent_item_colon' => __('Parent Event:'),
+        'edit_item'         => __('Edit Event'),
+        'update_item'       => __('Update Event'),
+        'add_new_item'      => __('Add New Event'),
+        'new_item_name'     => __('New Event Name'),
+        'menu_name'         => __('Event'),
+    );
+
+    $args = array(
+        'hierarchical'          => true,
+        'labels'                => $labels,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => true,
+        'show_admin_column'     => true,
+        'query_var'             => true,
+        'rewrite'               => array('slug' => 'event'),
+    );
+
+
+    register_taxonomy('conference-event-taxonomy', array('ccc-events'), $args);
+
+    // Day 
+    $labels = array(
         'name'              => _x('Event Day', 'taxonomy general name'),
         'singular_name'     => _x('Event Day', 'taxonomy singular name'),
         'search_items'      => __('Search Event Day'),
         'all_items'         => __('All Event Day'),
         'parent_item'       => __('Parent Event Day'),
-        'parent_item_colon' => __('Parent Event Day:'),
+        'parent_item_colon' => __('Parent Event: Day'),
         'edit_item'         => __('Edit Event Day'),
         'update_item'       => __('Update Event Day'),
         'add_new_item'      => __('Add New Event Day'),
@@ -203,7 +233,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-taxonomy', array('ccc-events'), $args);
+    register_taxonomy('conference-event-day', array('ccc-events'), $args);
 }
 add_action('init', 'ccc_register_taxonomies');
 
