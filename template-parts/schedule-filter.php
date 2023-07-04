@@ -14,43 +14,54 @@
  */
 
 get_header();
-
-
-$args = array(
-    'post_type' => 'schedule', // Replace 'event' with your custom post type slug
-    'posts_per_page' => 10, // Specify the number of events to display
-);
-
-$query = new WP_Query($args);
-
-if ($query->have_posts()) {
-    while ($query->have_posts()) {
-        $query->the_post();
-        // Display event details like title, date, location, etc.
-        the_title('<h2>', '</h2>');
-        the_date();
-        the_content();
-    }
-} else {
-    // No events found
-    echo 'No events found.';
-}
-
-wp_reset_postdata();
 ?>
 
-<?php
+<main id="primary" class="site-main">
 
-		endwhile;
 
-		the_posts_navigation();
+<?php if (have_posts()) : ?>
 
-	else :
+    <?php
 
-		get_template_part('template-parts/content', 'none');
+    $args = array(
+        'post_type'      => 'conference-events', // Replace 'event' with your custom post type slug
+        'posts_per_page' => -1, // Specify the number of events to display
+        'meta_query'     => array(
+            array(
+                'key'     => 'conference-industry-type', // Replace 'industry_type' with the actual meta key for industry type
+                'value'   => $industry,
+                'compare' => '=',
+            ),
+            array(
+                'key'     => 'conference-event-type', // Replace 'industry_type' with the actual meta key for industry type
+                'value'   => $event,
+                'compare' => '=',
+            ),
+        ),
+    );
 
-	endif;
-	?>
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+    ?>
+
+
+    get_template_part('template-parts/content', get_post_type());
+
+    <?php
+        while ($query->have_posts()) {
+            $query->the_post();
+            // Display event details like title, date, location, etc.
+            the_title('<h2>', '</h2>');
+            the_date();
+            the_content();
+        }
+    } else {
+        // No events found
+        echo 'No events found.';
+    }
+
+    wp_reset_postdata();
+    ?>
 
 </main><!-- #main -->
 
