@@ -30,16 +30,16 @@ get_header();
             <?php
 
             $args = array(
-                'post_type'      => 'conference-events', // Replace 'event' with your custom post type slug
-                'posts_per_page' => -1, // Specify the number of events to display
+                'post_type'      => 'conference-events',
+                'posts_per_page' => -1,
                 'meta_query'     => array(
                     array(
-                        'key'     => 'conference-industry-type', // Replace 'industry_type' with the actual meta key for industry type
+                        'key'     => 'conference-industry-type',
                         'value'   => $industry,
                         'compare' => '=',
                     ),
                     array(
-                        'key'     => 'conference-event-type', // Replace 'industry_type' with the actual meta key for industry type
+                        'key'     => 'conference-event-type',
                         'value'   => $event,
                         'compare' => '=',
                     ),
