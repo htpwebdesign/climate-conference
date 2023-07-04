@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying archive pages
  *
@@ -10,42 +11,62 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
+	<?php if (have_posts()) : ?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
+		<header class="page-header">
 			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+			the_archive_title('<h1 class="page-title">', '</h1>');
+			the_archive_description('<div class="archive-description">', '</div>');
+			?>
+		</header><!-- .page-header -->
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+		<?php
+		// Display events based on categories "day-1" and "day-2"
+		function display_events_by_category()
+		{
+			$args = array(
+				'post_type'      => 'schedule', // Replace 'event' with your custom post type slug
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'event-day', // Replace 'event_category' with your custom taxonomy slug
+						'field'    => 'slug',
+						'terms'    => array('day-1', 'day-2'), // Categories to display
+					),
+				),
+				'posts_per_page' => -1, // Set the number of posts to display (-1 for all)
+			);
 
-			endwhile;
+			$events_query = new WP_Query($args);
 
-			the_posts_navigation();
+			// Check if there are events to display
+			if ($events_query->have_posts()) {
+				echo '<div class="event-list">';
 
-		else :
+				while ($events_query->have_posts()) {
+					$events_query->the_post();
+					get_template_part('template-parts/content', 'event'); // Change 'event' to match your content template file name
+				}
 
-			get_template_part( 'template-parts/content', 'none' );
+				echo '</div>';
+			}
 
-		endif;
+			wp_reset_postdata();
+		}
+
+		// Call the function to display the events by category
+		display_events_by_category();
 		?>
 
-	</main><!-- #main -->
+	<?php else : ?>
+
+		<?php get_template_part('template-parts/content', 'none'); ?>
+
+	<?php endif; ?>
+
+</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();
+?>

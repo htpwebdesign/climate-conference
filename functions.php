@@ -13,6 +13,10 @@ if (!defined('_S_VERSION')) {
 	define('_S_VERSION', '1.0.0');
 }
 
+// define google maps api key
+global $maps_key;
+$maps_key = getenv( 'GOOGLE_MAPS_API_KEY' );
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -20,6 +24,7 @@ if (!defined('_S_VERSION')) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
 function climate_conference_setup()
 {
 	/*
@@ -51,7 +56,7 @@ function climate_conference_setup()
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__('Primary', 'climate-conference'),
+			'header' => esc_html__('Main Navigation', 'climate-conference'),
 		)
 	);
 
@@ -86,6 +91,8 @@ function climate_conference_setup()
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support('customize-selective-refresh-widgets');
+
+
 
 	/**
 	 * Add support for core custom logo.
@@ -126,13 +133,13 @@ function climate_conference_widgets_init()
 {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 'climate-conference'),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__('Add widgets here.', 'climate-conference'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'name'          => esc_html__('Footer', 'climate-conference'),
+			'id'            => 'footer_widget_area',
+			'description'   => esc_html__('Adjust Widget Here', 'climate-conference'),
+			'before_widget' => '<footer id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</footer>',
+			'before_title'  => '<h3 class="footer-title">',
+			'after_title'   => '</h3>',
 		)
 	);
 }
@@ -145,6 +152,12 @@ function climate_conference_scripts()
 {
 	wp_enqueue_style('climate-conference-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('climate-conference-style', 'rtl', 'replace');
+	
+	//for google maps api
+	global $maps_key;
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('google-maps', `https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype`, array(), '3', true );
+	wp_enqueue_script('google-map-init', get_template_directory_uri() . '/js/googlemaps.js', array('jquery', 'google-maps'), '3.7.0', true);
 
 	wp_enqueue_script('climate-conference-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
@@ -164,7 +177,6 @@ require get_template_directory() . '/inc/custom-header.php';
  * Custom Post Types & Taxonomies
  */
 require get_template_directory() . '/inc/cpt-taxonomy.php';
-
 
 /**
  * Custom template tags for this theme.
@@ -194,6 +206,7 @@ if (defined('JETPACK__VERSION')) {
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
 
 
 /*SPEAKERS*/
@@ -228,3 +241,31 @@ function create_speakers_post_type() {
     register_post_type( 'conference-speakers', $args );
 }
 add_action( 'init', 'create_speakers_post_type' );
+
+/**
+ * Enable classic editor for ACF restrictions
+ */
+function ccc_editor_filter( $use_block_editor, $post ) {
+	$page_ids = array( 33, 81 );
+	if ( in_array ( $post->ID, $page_ids ) ) {
+		return false;
+	}
+	else {
+		return $use_block_editor;
+	}
+
+}
+
+add_filter( 'use_block_editor_for_post', 'ccc_editor_filter', 10, 2 );
+
+
+/**
+ * Add Google Maps API Filter
+ */
+
+ function my_acf_google_map_api( $api ){
+	global $maps_key;
+	$api['key'] = $maps_key;
+	return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
