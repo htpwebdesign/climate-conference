@@ -98,7 +98,7 @@ function ccc_register_cpt()
         'supports'           => array('title', 'thumbnail', 'editor'),
     );
 
-    register_post_type('ccc-sponsors', $args);
+    register_post_type('conference-sponsors', $args);
 }
 add_action('init', 'ccc_register_cpt');
 
@@ -234,6 +234,33 @@ function ccc_register_taxonomies()
 
 
     register_taxonomy('conference-event-day', array('ccc-events'), $args);
+
+    $labels = array(
+        'name'              => _x( 'Sponsor Types', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Sponsor Types', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Sponsor Types' ),
+        'all_items'         => __( 'All Sponsor Types' ),
+        'parent_item'       => __( 'Parent Sponsor Type' ),
+        'parent_item_colon' => __( 'Parent Sponsor Type:' ),
+        'edit_item'         => __( 'Edit Sponsor Type' ),
+        'view_item'         => __( 'View Sponsor Type' ),
+        'update_item'       => __( 'Update Sponsor Type' ),
+        'add_new_item'      => __( 'Add New Sponsor Type' ),
+        'new_item_name'     => __( 'New Sponsor Type Name' ),
+        'menu_name'         => __( 'Sponsor Type' ),
+    );
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menu'  => true,
+        'show_in_rest'      => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'sponsors' ),
+    );
+    register_taxonomy( 'conference-sponsors-taxonomy', array( 'conference-sponsors' ), $args );
 }
 add_action('init', 'ccc_register_taxonomies');
 
