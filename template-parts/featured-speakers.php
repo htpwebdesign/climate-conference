@@ -37,26 +37,19 @@ if ($featured_speakers) { ?>
 
                     $speaker_portrait = get_field( 'portrait_' ); 
                     $speaker_name = esc_html( get_the_title() ); 
-                    $speaker_title = esc_html( get_field( 'job_title_and_company' ) );
-
-                    $terms = get_the_terms($post->ID, 'conference-industry-type'); 
-                    foreach ($terms as $term) {
-                        if ($term->slug == 'featured-speaker') {
-
-                            $term_link = get_term_link( $term ); ?>
+                    $speaker_title = esc_html( get_field( 'job_title_and_company' ) ); ?>
                             
-                            <div class="featured-speakers-col">
-                                
-                                <a href="<?php echo $term_link ?>" target="_blank"> 
-                                    <img class="featured-speakers-logo" 
-                                        src="<?php echo $speaker_portrait; ?>" 
-                                        alt="<?php echo `an image of $speaker_name`; ?>">
-                                    <p><?php echo $speaker_name ?></p>
-                                    <p><?php echo $speaker_title ?></p>
-                                </a> 
-                            </div><?php
-                        }
-                    }
+                    <div class="featured-speakers-col">
+                        
+                        <a href="<?php echo get_permalink($post->ID) ?>" target="_blank"> 
+                            <img class="featured-speakers-logo" 
+                                src="<?php echo $speaker_portrait; ?>" 
+                                alt="<?php echo `an image of $speaker_name`; ?>">
+                            <p><?php echo $speaker_name ?></p>
+                            <p><?php echo $speaker_title ?></p>
+                        </a> 
+                    </div>
+                    <?php
                 } ?>
 
             </div>
