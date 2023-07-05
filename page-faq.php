@@ -23,6 +23,11 @@ faq_section('general');
 faq_section('faq');
 
 faq_section('about');
+
+
+// contact form here
+
+
 ?>
 
 </main><!-- #main -->

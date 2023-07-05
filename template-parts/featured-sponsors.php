@@ -40,7 +40,7 @@ if ($featured_sponsors) { ?>
 
                     <div class="featured-sponsors-col">
 
-                        <h3><?php the_title(); ?></h3>
+                        <p><?php echo $company_name; ?></p>
                         
                         <a href="<?php echo get_field( 'link' ); ?>" target="_blank"> 
                             <img class="featured-sponsors-logo" 
