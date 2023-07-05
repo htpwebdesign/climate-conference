@@ -153,6 +153,14 @@ function climate_conference_scripts()
 	wp_enqueue_style('climate-conference-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('climate-conference-style', 'rtl', 'replace');
 
+	//for Google Fonts
+	wp_enqueue_style(
+		'climate-conference-googlefonts',
+		'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap',
+		array(),
+		null
+	);
+
 
 	//for google maps api
 	global $maps_key;
