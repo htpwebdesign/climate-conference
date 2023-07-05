@@ -49,7 +49,7 @@ function ccc_register_cpt()
         'order' => 'ASC',
     );
 
-    register_post_type('ccc-events', $args);
+    register_post_type('conference-events', $args);
 
     //Register Sponsors
     $labels = array(
@@ -141,7 +141,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-industry-type', array('ccc-events', 'conference-speakers', 'conference-sponsors'), $args);
+    register_taxonomy('conference-industry-type', array('conference-events', 'conference-speakers', 'conference-sponsors'), $args);
 
 
     // Event Type 
@@ -172,7 +172,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-type', array('ccc-events'), $args);
+    register_taxonomy('conference-event-type', array('conference-events'), $args);
 
 
     // Schedule 
@@ -203,7 +203,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-taxonomy', array('ccc-events'), $args);
+    register_taxonomy('conference-event-taxonomy', array('conference-events'), $args);
 
     // Day 
     $labels = array(
@@ -233,7 +233,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-day', array('ccc-events'), $args);
+    register_taxonomy('conference-event-day', array('conference-events'), $args);
 
     $labels = array(
         'name'              => _x( 'Sponsor Types', 'taxonomy general name' ),

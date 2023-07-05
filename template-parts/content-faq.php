@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Canadian Climate Conference faq page content template
+ *
+ *
+ * @package Canadian_Climate_Conference
+ */
 
 function faq_section($section_name, $post_id = false, $format_value = true) {
 
