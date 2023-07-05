@@ -34,7 +34,8 @@ get_header();
 	$taxonomy  = 'conference-sponsors-taxonomy';
 		$terms = get_terms(
 			array(
-				'taxonomy' => $taxonomy
+				'taxonomy' => $taxonomy,
+				'orderby' => 'ID'
 			)
 		);
 
