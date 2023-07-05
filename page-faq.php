@@ -26,7 +26,7 @@ faq_section('about');
 
 
 // contact form here
-
+echo do_shortcode('[gravityform id="4" title="true"]');
 
 ?>
 
