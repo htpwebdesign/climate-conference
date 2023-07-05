@@ -49,7 +49,11 @@ get_header();
             <a href="<?php esc_url( $call_to_action_1[ 'url' ] ) ?>"><?php echo esc_html( $call_to_action_1[ 'title' ] ) ?></a> <?php
         endif;
 
+        //featured industries template here  
+        get_template_part( 'template-parts/featured-industries', 'home' );     
+
         //featured speakers template here
+        get_template_part( 'template-parts/featured-speakers', 'home' );
 
         $call_to_action_2 = get_field( 'call_to_action_2' );
         if ( $call_to_action_2 ) : ?>
@@ -61,8 +65,7 @@ get_header();
             <a href="<?php esc_url( $call_to_action_3[ 'url' ] ) ?>"><?php echo esc_html( $call_to_action_3[ 'title' ] ) ?></a> <?php
         endif;
 
-        //featured industries template here  
-        get_template_part( 'template-parts/featured-industries', 'home' );             
+        
         ?>
 
         <p> <?php the_field( 'statistics_top_right' ); ?> </p>
