@@ -159,7 +159,7 @@ function climate_conference_scripts()
 	wp_enqueue_script('jquery');
 	wp_enqueue_script(
 		'google-maps', 
-		`https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype`, 
+		"https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=initMap", 
 		array(), 
 		'3', 
 		true
@@ -168,7 +168,7 @@ function climate_conference_scripts()
 		'google-map-init', 
 		get_template_directory_uri() . 
 		'/js/googlemaps.js', 
-		array('jquery', 'google-maps'), 
+		array(), 
 		'3.7.0', 
 		true
 	);
@@ -227,41 +227,6 @@ if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
-
-
-/*SPEAKERS*/
-function create_speakers_post_type()
-{
-	$labels = array(
-		'name'               => __('Speakers', 'text-domain'),
-		'singular_name'      => __('Speaker', 'text-domain'),
-		'add_new'            => __('Add New Speaker', 'text-domain'),
-		'add_new_item'       => __('Add New Speaker', 'text-domain'),
-		'edit_item'          => __('Edit Speaker', 'text-domain'),
-		'new_item'           => __('New Speaker', 'text-domain'),
-		'view_item'          => __('View Speaker', 'text-domain'),
-		'search_items'       => __('Search Speakers', 'text-domain'),
-		'not_found'          => __('No speakers found', 'text-domain'),
-		'not_found_in_trash' => __('No speakers found in Trash', 'text-domain'),
-		'parent_item_colon'  => __('Parent Speaker:', 'text-domain'),
-		'menu_name'          => __('Speakers', 'text-domain'),
-	);
-
-	$args = array(
-		'labels'              => $labels,
-		'public'              => true,
-		'has_archive'         => true,
-		'publicly_queryable'  => true,
-		'query_var'           => true,
-		'rewrite'             => array('slug' => 'speakers'),
-		'capability_type'     => 'post',
-		'menu_icon'           => 'dashicons-businessman',
-		'supports'            => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
-	);
-
-	register_post_type('conference-speakers', $args);
-}
-add_action('init', 'create_speakers_post_type');
 
 /**
  * Enable classic editor for ACF restrictions

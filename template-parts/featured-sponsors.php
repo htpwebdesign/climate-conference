@@ -9,13 +9,13 @@
 
 //get all sponsors with the taxonomy 'featured'
 $featured_sponsors = get_posts(array(
-    'post_type' => 'conference-sponsors',
-    'posts_per_page' => -1,
-    'tax_query' => array(
+    'post_type'         => 'conference-sponsors',
+    'posts_per_page'    => -1,
+    'tax_query'         => array(
         array(
-            'taxonomy' => 'conference-industry-type',
-            'field' => 'slug',
-            'terms' => 'featured-sponsors'
+            'taxonomy'  => 'conference-industry-type',
+            'field'     => 'slug',
+            'terms'     => 'featured-sponsors'
         )
     )
 ));

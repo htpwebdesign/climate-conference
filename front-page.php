@@ -86,13 +86,11 @@ get_header();
 
 
         $venue_map = get_field( 'venue_map' );
-        if( $venue_map ): ?>
-            <div class="acf-map" data-zoom="16">
-                <div class="marker" data-lat="<?php echo esc_attr( $venue_map[ 'lat' ] ); ?>" data-lng="<?php echo esc_attr( $venue_map[ 'lng' ] ); ?>"></div>
-                <?php echo $venue_map['lat'];
-                echo $venue_map['lng']; ?>
-            </div>
-        <?php endif; ?>
+            if( $venue_map ): ?>
+                <div class="acf-map" data-zoom="16">
+                    <div class="marker" data-lat="<?php echo esc_attr($venue_map['lat']); ?>" data-lng="<?php echo esc_attr($venue_map['lng']); ?>"></div>
+                </div>
+            <?php endif; ?>
 
         <p> <?php the_field( 'venue_name' ); ?> </p>
 
