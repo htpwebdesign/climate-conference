@@ -30,6 +30,67 @@ get_header();
 		endif;
 
 	endwhile; // End of the loop.
+
+	$taxonomy  = 'conference-sponsors-taxonomy';
+		$terms = get_terms(
+			array(
+				'taxonomy' => $taxonomy
+			)
+		);
+
+	if($terms && ! is_wp_error($terms) ){
+		foreach($terms as $term){
+			$args = array(
+				'post_type'      => 'conference-sponsors',
+				'posts_per_page' => -1,
+				'order'          => 'DESC',
+				'orderby'        => 'ID',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => $taxonomy,
+						'field'    => 'slug',
+						'terms'    => $term->slug,
+					)
+				),
+			);
+
+			$query = new WP_Query( $args ); ?>
+				<section class="sponsor-types"> <?php
+				if ( $query -> have_posts() ) {
+					
+					echo '<h2>' . esc_html( $term->name ) . '</h2>';
+					while ( $query -> have_posts() ) {
+						$query -> the_post();
+						if (function_exists('get_field')){
+							?> <div class="single-sponsor"> <?php 
+
+							$image = get_field('logo');
+							$size = 'medium';
+							if($image) {
+								echo wp_get_attachment_image( $image, $size );
+							}
+
+							$link = get_field('link');
+							if ($link){
+								$link_url = $link['url'];
+    							$link_title = $link['title']; ?>
+								<a href="<?php echo esc_url( $link_url ); ?>"><?php echo esc_html( $link_title ); ?></a> <?php
+							}
+
+							if (get_field('description') ) { ?>
+								<p><?php the_field('description'); ?></p><?php
+							}
+
+							?> </div> <?php
+						}
+					}
+					
+					wp_reset_postdata();
+				}
+				?> </section> <?php
+			}
+		}
+
 	?>
 
 </main><!-- #main -->
