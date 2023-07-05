@@ -234,9 +234,10 @@ function ccc_register_taxonomies()
 
 
 
+
     register_taxonomy('conference-event-day', array('conference-events'), $args);
 
- 
+
 
     $labels = array(
         'name'              => _x( 'Sponsor Types', 'taxonomy general name' ),

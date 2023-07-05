@@ -61,7 +61,8 @@ get_header();
             <a href="<?php esc_url( $call_to_action_3[ 'url' ] ) ?>"><?php echo esc_html( $call_to_action_3[ 'title' ] ) ?></a> <?php
         endif;
 
-        //featured industries template here               
+        //featured industries template here  
+        get_template_part( 'template-parts/featured-industries', 'home' );             
         ?>
 
         <p> <?php the_field( 'statistics_top_right' ); ?> </p>
@@ -70,7 +71,9 @@ get_header();
 
         <?php
 
-        //featured-sponsors template here
+        //load featured sponsors template here as template-parts/featured-sponsors.php
+        get_template_part( 'template-parts/featured-sponsors', 'home' );
+      
 
         
         $call_to_action_4 = get_field( 'call_to_action_4' );
