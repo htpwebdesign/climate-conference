@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying a single speaker post
  *
@@ -17,10 +18,10 @@ get_header();
         the_post();
 
         $job_title_and_company = get_field('job_title_and_company');
-        $portrait_id = get_field('portrait_');
+        $portrait_id = get_field('portrait_', false, false);
         $speaker_info = get_field('speaker_info');
 
-        ?>
+    ?>
         <div class="speaker-info">
             <?php if ($portrait_id) : ?>
                 <div class="portrait">
@@ -41,7 +42,7 @@ get_header();
             <?php endif; ?>
         </div>
 
-        <?php
+    <?php
         // Display speaker content
         get_template_part('template-parts/content', 'single');
 
@@ -57,7 +58,7 @@ get_header();
             comments_template();
         endif;
 
-        
+
     endwhile; // End of the loop.
     ?>
 
