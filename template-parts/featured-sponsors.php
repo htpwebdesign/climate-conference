@@ -7,56 +7,68 @@
  * @package Canadian_Climate_Conference
  */
 
-//get all sponsors with the taxonomy 'featured'
-$featured_sponsors = get_posts(array(
-    'post_type'         => 'conference-sponsors',
-    'posts_per_page'    => -1,
-    'tax_query'         => array(
-        array(
-            'taxonomy'  => 'conference-industry-type',
-            'field'     => 'slug',
-            'terms'     => 'featured-sponsors'
+if ( function_exists( 'get_field' ) ) :
+
+
+    //get all sponsors with the taxonomy 'featured'
+    $args = array(
+        'post_type'         => 'conference-sponsors',
+        'posts_per_page'    => -1,
+        'tax_query'         => array(
+            array(
+                'taxonomy'  => 'conference-industry-type',
+                'field'     => 'slug',
+                'terms'     => 'featured-sponsors'
+            )
         )
-    )
-));
+    );
 
-//output the logo and link for all featured sponsors with the taxonomy 'featured'
-if ($featured_sponsors) { ?>
+    $featured_sponsors = new WP_Query( $args );
 
-    <section class="featured-sponsors-section">
+    //output the logo and link for all featured sponsors with the taxonomy 'featured'
+    if ( $featured_sponsors->have_posts() ) : ?>
 
-        <div class="featured-sponsors-container">
+        <section class="featured-sponsors-section"> 
 
-            <h2 class="featured-sponsors-title">Proudly Sponsored by:</h2>
+            <h2 class="featured-sponsors-title">Proudly Sponsored by:</h2> <?php
 
-            <div class="featured-sponsors-row"> <?php
+            while($featured_sponsors->have_posts()) :
 
-                foreach ($featured_sponsors as $post) {
+                $featured_sponsors->the_post(); 
 
-                    setup_postdata( $post );
-
-                    $sponsor_logo = get_field( 'logo' ); 
+                //check for the logo and link fields, if none, display a message
+                if ( get_field( 'logo' ) && get_field( 'link' ) ) : 
+                    
+                    $sponsor_logo_id = get_field( 'logo', false, false ); 
+                    $sponsor_logo = wp_get_attachment_image( $sponsor_logo_id, 'full' );
                     $company_name = esc_html( get_the_title() ); ?>
 
-                    <div class="featured-sponsors-col">
+                    <div class="single-sponsor">
 
                         <p><?php echo $company_name; ?></p>
-                        
                         <a href="<?php echo get_field( 'link' ); ?>" target="_blank"> 
-                            <img class="featured-sponsors-logo" 
-                                src="<?php echo $sponsor_logo; ?>" 
-                                alt="<?php echo `$company_name's logo`; ?>">
+                            <?php echo $sponsor_logo; ?>
                         </a>
 
                     </div> <?php
-                } ?>
 
-            </div>
+                else : ?>
+                    <p>Sorry, no featured sponsors to display.</p> <?php
 
-        </div>
+                endif; 
 
-    </section> <?php
+            endwhile;
+            wp_reset_postdata(); ?>
 
-    wp_reset_postdata();
-}
+        </section> <?php
+
+    else : ?>
+        <p>There are currently no sponsors yet. Please check back later.</p> <?php
+
+    endif;
+
+else : ?>
+    <p>Oops! Something went wrong. Please check back later.</p> <?php
+
+endif;
 ?>

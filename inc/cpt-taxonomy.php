@@ -304,6 +304,7 @@ add_action('init', 'ccc_register_taxonomies');
 function ccc_rewrite_flush()
 {
     ccc_register_cpt();
+    ccc_register_taxonomies();
     flush_rewrite_rules();
 }
 add_action('after_switch_theme', 'ccc_rewrite_flush');
