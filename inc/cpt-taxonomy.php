@@ -49,7 +49,7 @@ function ccc_register_cpt()
         'order' => 'ASC',
     );
 
-    register_post_type('ccc-events', $args);
+    register_post_type('conference-events', $args);
 
     //Register Sponsors
     $labels = array(
@@ -98,7 +98,37 @@ function ccc_register_cpt()
         'supports'           => array('title', 'thumbnail', 'editor'),
     );
 
-    register_post_type('ccc-sponsors', $args);
+    register_post_type('conference-sponsors', $args);
+
+    //Register Speakers
+    $labels = array(
+		'name'               => __('Speakers', 'text-domain'),
+		'singular_name'      => __('Speaker', 'text-domain'),
+		'add_new'            => __('Add New Speaker', 'text-domain'),
+		'add_new_item'       => __('Add New Speaker', 'text-domain'),
+		'edit_item'          => __('Edit Speaker', 'text-domain'),
+		'new_item'           => __('New Speaker', 'text-domain'),
+		'view_item'          => __('View Speaker', 'text-domain'),
+		'search_items'       => __('Search Speakers', 'text-domain'),
+		'not_found'          => __('No speakers found', 'text-domain'),
+		'not_found_in_trash' => __('No speakers found in Trash', 'text-domain'),
+		'parent_item_colon'  => __('Parent Speaker:', 'text-domain'),
+		'menu_name'          => __('Speakers', 'text-domain'),
+	);
+
+	$args = array(
+		'labels'              => $labels,
+		'public'              => true,
+		'has_archive'         => true,
+		'publicly_queryable'  => true,
+		'query_var'           => true,
+		'rewrite'             => array('slug' => 'speakers'),
+		'capability_type'     => 'post',
+		'menu_icon'           => 'dashicons-businessman',
+		'supports'            => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+	);
+
+	register_post_type('conference-speakers', $args);
 }
 add_action('init', 'ccc_register_cpt');
 
@@ -141,7 +171,7 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-industry-type', array('ccc-events', 'conference-speakers', 'conference-sponsors'), $args);
+    register_taxonomy('conference-industry-type', array('conference-events', 'conference-speakers', 'conference-sponsors'), $args);
 
 
     // Event Type 
@@ -172,17 +202,47 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-type', array('ccc-events'), $args);
+    register_taxonomy('conference-event-type', array('conference-events'), $args);
 
 
     // Schedule 
+    $labels = array(
+        'name'              => _x('Event', 'taxonomy general name'),
+        'singular_name'     => _x('Event', 'taxonomy singular name'),
+        'search_items'      => __('Search Event'),
+        'all_items'         => __('All Event'),
+        'parent_item'       => __('Parent Event'),
+        'parent_item_colon' => __('Parent Event:'),
+        'edit_item'         => __('Edit Event'),
+        'update_item'       => __('Update Event'),
+        'add_new_item'      => __('Add New Event'),
+        'new_item_name'     => __('New Event Name'),
+        'menu_name'         => __('Event'),
+    );
+
+    $args = array(
+        'hierarchical'          => true,
+        'labels'                => $labels,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => true,
+        'show_admin_column'     => true,
+        'query_var'             => true,
+        'rewrite'               => array('slug' => 'event'),
+    );
+
+
+    register_taxonomy('conference-event-taxonomy', array('conference-events'), $args);
+
+    // Day 
     $labels = array(
         'name'              => _x('Event Day', 'taxonomy general name'),
         'singular_name'     => _x('Event Day', 'taxonomy singular name'),
         'search_items'      => __('Search Event Day'),
         'all_items'         => __('All Event Day'),
         'parent_item'       => __('Parent Event Day'),
-        'parent_item_colon' => __('Parent Event Day:'),
+        'parent_item_colon' => __('Parent Event: Day'),
         'edit_item'         => __('Edit Event Day'),
         'update_item'       => __('Update Event Day'),
         'add_new_item'      => __('Add New Event Day'),
@@ -203,7 +263,39 @@ function ccc_register_taxonomies()
     );
 
 
-    register_taxonomy('conference-event-taxonomy', array('ccc-events'), $args);
+
+
+    register_taxonomy('conference-event-day', array('conference-events'), $args);
+
+
+
+    $labels = array(
+        'name'              => _x( 'Sponsor Types', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Sponsor Types', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Sponsor Types' ),
+        'all_items'         => __( 'All Sponsor Types' ),
+        'parent_item'       => __( 'Parent Sponsor Type' ),
+        'parent_item_colon' => __( 'Parent Sponsor Type:' ),
+        'edit_item'         => __( 'Edit Sponsor Type' ),
+        'view_item'         => __( 'View Sponsor Type' ),
+        'update_item'       => __( 'Update Sponsor Type' ),
+        'add_new_item'      => __( 'Add New Sponsor Type' ),
+        'new_item_name'     => __( 'New Sponsor Type Name' ),
+        'menu_name'         => __( 'Sponsor Type' ),
+    );
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menu'  => true,
+        'show_in_rest'      => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'sponsors' ),
+    );
+    register_taxonomy( 'conference-sponsors-taxonomy', array( 'conference-sponsors' ), $args );
+
 }
 add_action('init', 'ccc_register_taxonomies');
 

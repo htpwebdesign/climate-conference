@@ -49,7 +49,11 @@ get_header();
             <a href="<?php esc_url( $call_to_action_1[ 'url' ] ) ?>"><?php echo esc_html( $call_to_action_1[ 'title' ] ) ?></a> <?php
         endif;
 
+        //featured industries template here  
+        get_template_part( 'template-parts/featured-industries', 'home' );     
+
         //featured speakers template here
+        get_template_part( 'template-parts/featured-speakers', 'home' );
 
         $call_to_action_2 = get_field( 'call_to_action_2' );
         if ( $call_to_action_2 ) : ?>
@@ -61,7 +65,7 @@ get_header();
             <a href="<?php esc_url( $call_to_action_3[ 'url' ] ) ?>"><?php echo esc_html( $call_to_action_3[ 'title' ] ) ?></a> <?php
         endif;
 
-        //featured industries template here               
+        
         ?>
 
         <p> <?php the_field( 'statistics_top_right' ); ?> </p>
@@ -70,7 +74,9 @@ get_header();
 
         <?php
 
-        //featured-sponsors template here
+        //load featured sponsors template here as template-parts/featured-sponsors.php
+        get_template_part( 'template-parts/featured-sponsors', 'home' );
+      
 
         
         $call_to_action_4 = get_field( 'call_to_action_4' );
@@ -80,13 +86,11 @@ get_header();
 
 
         $venue_map = get_field( 'venue_map' );
-        if( $venue_map ): ?>
-            <div class="acf-map" data-zoom="16">
-                <div class="marker" data-lat="<?php echo esc_attr( $venue_map[ 'lat' ] ); ?>" data-lng="<?php echo esc_attr( $venue_map[ 'lng' ] ); ?>"></div>
-                <?php echo $venue_map['lat'];
-                echo $venue_map['lng']; ?>
-            </div>
-        <?php endif; ?>
+            if( $venue_map ): ?>
+                <div class="acf-map" data-zoom="16">
+                    <div class="marker" data-lat="<?php echo esc_attr($venue_map['lat']); ?>" data-lng="<?php echo esc_attr($venue_map['lng']); ?>"></div>
+                </div>
+            <?php endif; ?>
 
         <p> <?php the_field( 'venue_name' ); ?> </p>
 
@@ -108,5 +112,4 @@ get_header();
 </main><!-- #main -->
  
 <?php
-get_sidebar();
 get_footer();
