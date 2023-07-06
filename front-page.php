@@ -100,8 +100,7 @@ get_header(); ?>
                 <p> <?php the_field( 'statistics_top_right' ); ?> </p>    
                 <p> <?php the_field( 'statistics_bottom_left' ); ?> </p>
             </figure> <?php 
-        endif; ?>
-        <?php
+        endif; 
 
         //featured sponsors template
         get_template_part( 'template-parts/featured-sponsors', 'home' );
@@ -142,7 +141,5 @@ get_header(); ?>
         <p>Oops! Something went wrong. Please check back later.</p> <?php
     endif; ?>
 
-</main><!-- #main -->
- 
-<?php
+</main><!-- #main --> <?php
 get_footer();
