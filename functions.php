@@ -136,8 +136,8 @@ function climate_conference_widgets_init()
 			'name'          => esc_html__('Footer', 'climate-conference'),
 			'id'            => 'footer_widget_area',
 			'description'   => esc_html__('Adjust Widget Here', 'climate-conference'),
-			'before_widget' => '<footer id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</footer>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="footer-title">',
 			'after_title'   => '</h3>',
 		)
@@ -159,7 +159,7 @@ function climate_conference_scripts()
 	wp_enqueue_script('jquery');
 	wp_enqueue_script(
 		'google-maps', 
-		"https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=initMap", 
+		"https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype", 
 		array(), 
 		'3', 
 		true
@@ -214,6 +214,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Load FAQ section function(s)
+ */
+require get_template_directory() . '/inc/faq-page-functions.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if (defined('JETPACK__VERSION')) {
@@ -247,7 +252,6 @@ add_filter('use_block_editor_for_post', 'ccc_editor_filter', 10, 2);
 /**
  * Add Google Maps API Filter
  */
-
 function my_acf_google_map_api($api)
 {
 	global $maps_key;

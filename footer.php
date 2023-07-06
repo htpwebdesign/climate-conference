@@ -15,5 +15,6 @@
 			<?php dynamic_sidebar( 'footer_widget_area' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
+	<?php wp_footer(); ?>
 </body>
 </html>
