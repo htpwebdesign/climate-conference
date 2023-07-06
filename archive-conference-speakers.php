@@ -38,6 +38,7 @@ get_header();
                 else :
                     ?>
 
+
                     <p>Sorry, no speakers to display.</p>
 
                 <?php
