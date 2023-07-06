@@ -166,30 +166,33 @@ function climate_conference_scripts()
 	global $maps_key;
 	wp_enqueue_script('jquery');
 	wp_enqueue_script(
-		'google-maps', 
-		"https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype", 
-		array(), 
-		'3', 
+		'google-maps',
+		"https://maps.googleapis.com/maps/api/js?key=$maps_key&callback=Function.prototype",
+		array(),
+		'3',
 		true
 	);
 	wp_enqueue_script(
-		'google-map-init', 
-		get_template_directory_uri() . 
-		'/js/googlemaps.js', 
-		array(), 
-		'3.7.0', 
+		'google-map-init',
+		get_template_directory_uri() .
+			'/js/googlemaps.js',
+		array(),
+		'3.7.0',
 		true
 	);
-
 
 	//for Mailchimp submit on pressing enter
 	wp_enqueue_script('subscribe-form', get_template_directory_uri() . '/js/subscribe-form.js', array('jquery'), '1.0.0', true);
 
 	//for slick slider
 	wp_enqueue_script('slick-slider', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.0.0', true);
-	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.js', array('jquery'), '1.0.0', true );
+	wp_enqueue_script('slick', get_template_directory_uri() . '/js/slick.js', array('jquery'), '1.0.0', true);
 
 	wp_enqueue_script('climate-conference-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+
+
+	// For schedule.js
+	wp_enqueue_script('conference-event-schedule', get_template_directory_uri() . '/js/schedule.js', array(), _S_VERSION, false);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -241,6 +244,7 @@ if (defined('JETPACK__VERSION')) {
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
 
 
 /**
