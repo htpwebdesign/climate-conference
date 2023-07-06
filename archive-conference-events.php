@@ -29,156 +29,214 @@ get_header();
 
             <?php
 
-            $args = array(
-                'post_type'      => 'conference-events',
-                'posts_per_page' => -1,
-                'meta_query'     => array(
-                    array(
-                        'key'     => 'conference-industry-type',
-                        'value'   => $industry,
-                        'compare' => '=',
-                    ),
-                    array(
-                        'key'     => 'conference-event-type',
-                        'value'   => $event,
-                        'compare' => '=',
+
+            // Industry / Event Taxonomies 
+            $industry = isset($_GET['conference-industry-type']) ? sanitize_text_field($_GET['conference-industry-type']) : '';
+            $event = isset($_GET['conference-event-type']) ? sanitize_text_field($_GET['conference-event-type']) : '';
+
+            $terms = get_terms(
+                array(
+                    'post_type'      => 'conference-events',
+                    'posts_per_page' => -1,
+                    'tax_query'      => array(
+                        array(
+                            'taxonomy' => 'conference-industry-type',
+                            'field'    => 'slug',
+                            'terms'    => $industry,
+                        ),
+                        array(
+                            'taxonomy' => 'conference-event-type',
+                            'field'    => 'slug',
+                            'terms'    => $event,
+                        ),
                     ),
                 ),
             );
 
             ?>
 
-            <!-- Tabs  -->
-            <label for="event-type">Event: </label>
-            <select name="event-type" id="event-type">
-                <option value="">All</option>
-                <option value="agriculture" <?php selected($industry, 'agriculture'); ?>>Agriculture</option>
-                <option value="climate" <?php selected($industry, 'climate'); ?>>Climate</option>
-                <option value="renewable-energy" <?php selected($industry, 'renewable-energy'); ?>>Renewable Energy</option>
-                <option value="sustainability" <?php selected($industry, 'sustainability'); ?>>Sustainability</option>
-                <option value="sustainable-fashion-and-textiles	" <?php selected($industry, 'sustainable-fashion-and-textiles'); ?>>Sustainable Fashion and Textiles</option>
-                <option value="technology" <?php selected($industry, 'technology'); ?>>Technology</option>
-                <option value="transportation" <?php selected($industry, 'transportation'); ?>>Transportation</option>
-            </select>
-            <label for="industry-type">Industry: </label>
-            <select name="industry-type" id="industry-type">
-                <option value="">All</option>
-                <option value="industry1" <?php selected($industry, 'industry1'); ?>>Industry 1</option>
-                <option value="industry2" <?php selected($industry, 'industry2'); ?>>Industry 2</option>
-                <option value="industry3" <?php selected($industry, 'industry3'); ?>>Industry 3</option>
-            </select>
-        </div>
 
-        <!-- Script to filter events and industries -->
+            <!-- Script to filter events and industries -->
+            <script>
+                function filterSchedule() {
+                    let eventSelected = document.getElementById("event-type");
+                    let industrySelected = document.getElementById("industry-type");
+
+
+                    let selectedEvent = eventSelected.value;
+                    let selectedIndustry = industrySelected.value;
+
+
+                    let events = document.getElementsByClassName("conference-events");
+
+                    // Display or hide based on selection 
+                    for (let i = 0; i < events.length; i++) {
+                        let event = events[i];
+
+                        // if selectedEvents = selectedEvents dropdown, display block else display none 
+                        if (selectedEvent === "all" || event.classList.contains(selectedEvent)) {
+                            event.style.display = "block";
+                        } else {
+                            event.style.display = "none";
+                        }
+
+                        // the industry filter acts as a secondary filter, is to REMOVE things that dont match. From the remaining elements on screen.
+                        // if the events do not match the selectedIndustry display none 
+                        if (!event.classList.contains(selectedIndustry)) {
+                            event.style.display = "none";
+                        }
+                    }
+                }
+            </script>
+
+            <!-- Event -->
+            <label for="conference-event-taxonomy">Event: </label>
+            <select name="conference-event-taxonomy" id="event-type" onchange="filterSchedule()">
+                <option value="all" selected="selected">All</option>
+                <?php
+                // Grab all of the terms in conference-event-tax
+                $event_terms = get_terms(array(
+                    'taxonomy'   => 'conference-event-taxonomy'
+                ));
+                // Display all options 
+                foreach ($event_terms as $term) {
+                    $option_value = 'conference-event-taxonomy-' . $term->slug;
+                    $option_label = $term->name;
+                    echo '<option value="' . esc_attr($option_value) . '">' . esc_html($option_label) . '</option>';
+                }
+                ?>
+            </select>
+
+
+            <!-- Industry -->
+            <label for="conference-industry-type">Industry: </label>
+            <select name="conference-industry-type" id="industry-type" onchange="filterSchedule()">
+                <option value="all" selected="selected">All</option>
+                <?php
+                // Grab all of the terms in conference-event-tax
+                $industry_terms = get_terms(array(
+                    'taxonomy'   => 'conference-industry-type'
+                ));
+                // Display all options 
+                foreach ($industry_terms as $term) {
+                    $option_value = 'conference-industry-type-' . $term->slug;
+                    $option_label = $term->name;
+                    echo '<option value="' . esc_attr($option_value) . '">' . esc_html($option_label) . '</option>';
+                }
+                ?>
+            </select>
+
+
+            <div id="day1" class="tabcontent">
+                <?php
+                // Display events for day 1
+                function display_events_day1()
+                {
+
+                    $args = array(
+                        'post_type'      => 'conference-events',
+                        'tax_query'      => array(
+                            array(
+                                'taxonomy' => 'conference-event-day',
+                                'field'    => 'slug',
+                                'terms'    => 'day-1', // Day 1 category slug
+                            ),
+                        ),
+                        'posts_per_page' => -1, // -1 To display all 
+                    );
+
+                    $events_query = new WP_Query($args);
+
+                    // Check if there are events to display
+                    if ($events_query->have_posts()) {
+                        echo '<div class="event-list">';
+                        while ($events_query->have_posts()) {
+                            $events_query->the_post();
+
+                            get_template_part('template-parts/content', get_post_type());
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<p>No events found for Day 1.</p>';
+                    }
+
+                    wp_reset_postdata();
+                }
+
+                // Call function to display day 1 
+                display_events_day1();
+                ?>
+            </div>
+
+            <div id="day2" class="tabcontent">
+                <?php
+                // Display events for day 2
+                function display_events_day2()
+                {
+                    $args = array(
+                        'post_type'      => 'conference-events',
+                        'tax_query'      => array(
+                            array(
+                                'taxonomy' => 'conference-event-day',
+                                'field'    => 'slug',
+                                'terms'    => 'day-2',
+                            ),
+                        ),
+                        'posts_per_page' => -1,  // -1 To display all 
+                    );
+
+                    $events_query = new WP_Query($args);
+
+                    // Check if there are events to display
+                    if ($events_query->have_posts()) {
+                        echo '<div class="event-list">';
+                        while ($events_query->have_posts()) {
+                            $events_query->the_post();
+                            get_template_part('template-parts/content', get_post_type());
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<p>No events found for Day 2.</p>';
+                    }
+
+                    wp_reset_postdata();
+                }
+
+                // Call function to display day 2
+                display_events_day2();
+                ?>
+            </div>
+
+        <?php else : ?>
+
+            <?php get_template_part('template-parts/content', 'none'); ?>
+
+        <?php endif; ?>
+
+        <!-- script function for day 1 / 2 tab  -->
         <script>
-            // grab the two selects
-            // grab ALL 
+            function openTab(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
         </script>
-
-        <div id="day1" class="tabcontent">
-            <?php
-            // Display events for day 1
-            function display_events_day1()
-            {
-                $args = array(
-                    'post_type'      => 'conference-events',
-                    'tax_query'      => array(
-                        array(
-                            'taxonomy' => 'conference-event-day',
-                            'field'    => 'slug',
-                            'terms'    => 'day-1', // Day 1 category slug
-                        ),
-                    ),
-                    'posts_per_page' => -1, // -1 To display all 
-                );
-
-                $events_query = new WP_Query($args);
-
-                // Check if there are events to display
-                if ($events_query->have_posts()) {
-                    echo '<div class="event-list">';
-                    while ($events_query->have_posts()) {
-                        $events_query->the_post();
-
-                        get_template_part('template-parts/content', get_post_type());
-                    }
-                    echo '</div>';
-                } else {
-                    echo '<p>No events found for Day 1.</p>';
-                }
-
-                wp_reset_postdata();
-            }
-
-            // Call function to display day 1 
-            display_events_day1();
-            ?>
-        </div>
-
-        <div id="day2" class="tabcontent">
-            <?php
-            // Display events for day 2
-            function display_events_day2()
-            {
-                $args = array(
-                    'post_type'      => 'conference-events',
-                    'tax_query'      => array(
-                        array(
-                            'taxonomy' => 'conference-event-day',
-                            'field'    => 'slug',
-                            'terms'    => 'day-2',
-                        ),
-                    ),
-                    'posts_per_page' => -1,  // -1 To display all 
-                );
-
-                $events_query = new WP_Query($args);
-
-                // Check if there are events to display
-                if ($events_query->have_posts()) {
-                    echo '<div class="event-list">';
-                    while ($events_query->have_posts()) {
-                        $events_query->the_post();
-                        get_template_part('template-parts/content', get_post_type());
-                    }
-                    echo '</div>';
-                } else {
-                    echo '<p>No events found for Day 2.</p>';
-                }
-
-                wp_reset_postdata();
-            }
-
-            // Call function to display day 2
-            display_events_day2();
-            ?>
-        </div>
-
-    <?php else : ?>
-
-        <?php get_template_part('template-parts/content', 'none'); ?>
-
-    <?php endif; ?>
-
-    <!-- script function for day 1 / 2 tab  -->
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
 
 </main><!-- #main -->
 
 <?php
 get_footer();
 ?>
+
+
+<!-- Add function register taax to flush in cpt  -->
+<!-- remove archive news  -->
+<!-- add built by in footer with links to portfolio -->
