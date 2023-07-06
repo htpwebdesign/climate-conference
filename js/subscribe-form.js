@@ -1,5 +1,5 @@
 /**
- * Script for the subscribe form, pressing enter will submit the form
+ * Script for the subscribe form, pressing enter will submit the form on all footer.php templates
  *
  *
  * @package Canadian_Climate_Conference

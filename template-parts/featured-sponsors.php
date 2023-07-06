@@ -10,7 +10,7 @@
 if ( function_exists( 'get_field' ) ) :
 
 
-    //get all sponsors with the taxonomy 'featured'
+    //get all sponsors with the industry taxonomy 'featured'
     $args = array(
         'post_type'         => 'conference-sponsors',
         'posts_per_page'    => -1,
@@ -46,8 +46,8 @@ if ( function_exists( 'get_field' ) ) :
                     <div class="single-sponsor">
 
                         <p><?php echo $company_name; ?></p>
-                        <a href="<?php echo get_field( 'link' ); ?>" target="_blank"> 
-                            <?php echo $sponsor_logo; ?>
+                        <a href="<?php echo get_field( 'link' ); ?>" target="_blank"> <?php 
+                            echo $sponsor_logo; ?>
                         </a>
 
                     </div> <?php

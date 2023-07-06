@@ -1,5 +1,5 @@
 /**
- * Slick Carousel/Slider Base Code for Hero Slider
+ * Slick Carousel/Slider Base Code for Hero Slider on front-page.php
  *
  * 
  * @package Canadian_Climate_Conference

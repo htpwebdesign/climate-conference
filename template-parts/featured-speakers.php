@@ -9,7 +9,7 @@
 
 if ( function_exists( 'get_field' ) ) :
 
-    //get all speakers with the taxonomy 'featured'
+    //get all speakers with the industry taxonomy 'featured'
     $args = array(
         'post_type'         => 'conference-speakers',
         'posts_per_page'    => -1,
@@ -26,7 +26,7 @@ if ( function_exists( 'get_field' ) ) :
 
     <section class="featured-speakers-section"> <?php
 
-    //output the  featured speakers
+    //output the featured speakers
     if ( $featured_speakers->have_posts() ) : ?>
 
         <h2 class="featured-speakers-title">Featured Speakers:</h2>
@@ -37,6 +37,7 @@ if ( function_exists( 'get_field' ) ) :
 
                 $featured_speakers->the_post();
 
+                //check if the speaker has a portrait, job title, and name, if none, display a message
                 if ( get_field( 'portrait_' ) && get_field( 'job_title_and_company' ) && get_the_title() ) :
 
                     $speaker_portrait_id = get_field( 'portrait_', false, false );

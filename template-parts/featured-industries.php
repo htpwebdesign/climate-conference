@@ -11,7 +11,7 @@
 
  if ( function_exists( 'get_field' ) ) :
 
-    //get all sponsors with the taxonomy 'featured-industry'
+    //get all sponsors with the industry taxonomy 'featured-industry'
     $args = array(
         'post_type'         => 'conference-events',
         'posts_per_page'    => -1,
