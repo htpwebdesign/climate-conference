@@ -185,7 +185,9 @@ function climate_conference_scripts()
 	//for Mailchimp submit on pressing enter
 	wp_enqueue_script('subscribe-form', get_template_directory_uri() . '/js/subscribe-form.js', array('jquery'), '1.0.0', true);
 
-
+	//for slick slider
+	wp_enqueue_script('slick-slider', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.0.0', true);
+	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.js', array('jquery'), '1.0.0', true );
 
 	wp_enqueue_script('climate-conference-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 

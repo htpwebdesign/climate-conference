@@ -32,20 +32,25 @@ get_header(); ?>
                     <p><?php the_field( 'venue_name' ); ?></p> <?php
                 endif;               
 
-                if ( get_field( 'canadian_climate_conference' ) ) :
+                if ( get_field( 'canadian_climate_conference' ) ) : ?>
 
-                    $images = get_field('canadian_climate_conference');
-                    foreach ( $images as $image ) :
+                    <!-- Hero slider class required for slick -->
+                    <div class="hero-slider"> <?php
 
-                        $image_id = $image['ID'];
-                        $image_attachment = wp_get_attachment_image( $image_id, 'full' ); ?>
+                        $images = get_field('canadian_climate_conference');
+                        foreach ( $images as $image ) :
+    
+                            $image_id = $image['ID'];
+                            $image_attachment = wp_get_attachment_image( $image_id, 'full' ); ?>
+    
+                            <!-- slick slider info will go here -->
+                            <div class="hero-image-container"> <?php 
+                                echo $image_attachment; ?>
+                            </div> <?php
+    
+                        endforeach; ?>
+                    </div> <?php
 
-                        <!-- slick slider info will go here -->
-                        <div class="hero-container"> <?php 
-                            echo $image_attachment; ?>
-                        </div> <?php
-
-                    endforeach;
                 endif; ?>
             </header> <?php
 

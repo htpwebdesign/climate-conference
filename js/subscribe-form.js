@@ -14,6 +14,5 @@ function handleKeyDown(event) {
   }
 
   function submitForm() {
-    var input = document.getElementById('subscribeForm').value;
-    console.log('Submitted:', input);
+    document.getElementById('mc4wp-form-1').submit();
   }
