@@ -13,11 +13,6 @@
  * @package Canadian_Climate_Conference
  */
 
-get_header();
-?>
-
-<main id="primary" class="site-main">
-
 
 <?php if (have_posts()) : ?>
 
@@ -40,30 +35,10 @@ get_header();
         ),
     );
 
-    $query = new WP_Query($args);
-    if ($query->have_posts()) {
-    ?>
-
 
     get_template_part('template-parts/content', get_post_type());
 
-    <?php
-        while ($query->have_posts()) {
-            $query->the_post();
-            // Display event details like title, date, location, etc.
-            the_title('<h2>', '</h2>');
-            the_date();
-            the_content();
-        }
-    } else {
-        // No events found
-        echo 'No events found.';
-    }
 
-    wp_reset_postdata();
-    ?>
 
-</main><!-- #main -->
 
-<?php
-get_footer();
+
