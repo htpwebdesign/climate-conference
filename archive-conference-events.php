@@ -117,17 +117,16 @@ get_header();
 
             <div id="day1" class="tabcontent">
                 <?php
-                // Display events for day 1
+                // Display events for day 2
                 function display_events_day1()
                 {
-
                     $args = array(
                         'post_type'      => 'conference-events',
                         'tax_query'      => array(
                             array(
                                 'taxonomy' => 'conference-event-day',
                                 'field'    => 'slug',
-                                'terms'    => 'day-1', // Day 1 category slug
+                                'terms'    => 'day-1',
                             ),
                         ),
                         'posts_per_page' => -1,
@@ -139,12 +138,38 @@ get_header();
                     if ($events_query->have_posts()) {
                         echo '<div class="event-list">';
                         while ($events_query->have_posts()) {
-                            // Get events information 
                             $events_query->the_post();
 
-                            get_template_part('template-parts/schedule-filter');
+                            $event_id      = get_the_ID(); // Get the ID of the current post
+                            $title         = get_the_title();
+                            $industry      = get_the_terms($event_id, 'conference-industry-type');
+                            $description   = get_field('event_information', $event_id);
+                            $time          = get_field('start_time', $event_id);
+                            $speaker_name  = get_field('conference-events', $event_id);
 
-                            echo '</div>';
+                            // Format time
+                            $formatted_time = date('g:i A', strtotime($time));
+
+                            $post_type = get_post_type(); // Get the current post type
+
+                            // Get all classes related to the CPT ID
+                            $cpt_classes = get_post_class('', $event_id);
+
+                            // Combine classes grabbed from CPT ID into a single string
+                            $cpt_class_string = implode(' ', $cpt_classes);
+                ?>
+                            <div class="event <?php echo $cpt_class_string; ?>" id="<?php echo $post_type . '-' . $event_id; ?>">
+                                <!-- <button class="accordion">closed</button>
+                    <div class="panel"> -->
+                                <p><b>Start Time:</b> <?php echo $formatted_time; ?></p>
+                                <h2><?php echo $title; ?></h2>
+                                <p><b>Industry:</b> <?php echo $industry[0]->name; ?></p>
+                                <p>Featuring: <?php echo $speaker_name; ?></p>
+                                <p><?php echo $description; ?></p>
+                                <!-- </div> -->
+                                <hr>
+                            </div>
+                <?php
                         }
                         echo '</div>';
                     } else {
@@ -154,10 +179,11 @@ get_header();
                     wp_reset_postdata();
                 }
 
-                // Call function to display day 1 
+                // Call function to display day 2
                 display_events_day1();
                 ?>
             </div>
+
 
             <div id="day2" class="tabcontent">
                 <?php
@@ -184,9 +210,36 @@ get_header();
                         while ($events_query->have_posts()) {
                             $events_query->the_post();
 
-                            get_template_part('template-parts/schedule-filter');
+                            $event_id      = get_the_ID(); // Get the ID of the current post
+                            $title         = get_the_title();
+                            $industry      = get_the_terms($event_id, 'conference-industry-type');
+                            $description   = get_field('event_information', $event_id);
+                            $time          = get_field('start_time', $event_id);
+                            $speaker_name  = get_field('conference-events', $event_id);
 
-                            echo '</div>';
+                            // Format time
+                            $formatted_time = date('g:i A', strtotime($time));
+
+                            $post_type = get_post_type(); // Get the current post type
+
+                            // Get all classes related to the CPT ID
+                            $cpt_classes = get_post_class('', $event_id);
+
+                            // Combine classes grabbed from CPT ID into a single string
+                            $cpt_class_string = implode(' ', $cpt_classes);
+                ?>
+                            <div class="event <?php echo $cpt_class_string; ?>" id="<?php echo $post_type . '-' . $event_id; ?>">
+                                <!-- <button class="accordion">closed</button>
+                    <div class="panel"> -->
+                                <p><b>Start Time:</b> <?php echo $formatted_time; ?></p>
+                                <h2><?php echo $title; ?></h2>
+                                <p><b>Industry:</b> <?php echo $industry[0]->name; ?></p>
+                                <p>Featuring: <?php echo $speaker_name; ?></p>
+                                <p><?php echo $description; ?></p>
+                                <!-- </div> -->
+                                <hr>
+                            </div>
+                <?php
                         }
                         echo '</div>';
                     } else {
@@ -202,6 +255,7 @@ get_header();
             </div>
 
 
+
         <?php else : ?>
 
             <?php get_template_part('template-parts/content', 'none'); ?>
@@ -215,6 +269,5 @@ get_footer();
 ?>
 
 
-<!-- Add function register taax to flush in cpt  -->
-<!-- remove archive news  -->
+
 <!-- add built by in footer with links to portfolio -->
