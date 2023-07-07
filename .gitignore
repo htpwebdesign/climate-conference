@@ -92,7 +92,7 @@ package-lock.json
 *.swp
 *.vi
 *~
-
+.htaccess
 
 # Ignore compiled CSS from repository #
 #####################
