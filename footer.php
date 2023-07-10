@@ -12,7 +12,8 @@
 ?>
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<?php dynamic_sidebar( 'footer_widget_area' ); ?>
+			<?php dynamic_sidebar( 'footer_widget_area' );
+				  the_custom_logo();?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 	<?php wp_footer(); ?>
