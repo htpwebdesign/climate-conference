@@ -1,0 +1,80 @@
+.site-header {
+    background-color: $primaryDark;
+    position: relative;
+
+    .site-branding {
+        a {
+            margin: 1rem 0 0.5rem 1rem;
+            max-width: 150px;
+        }
+    }
+    
+    button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
+        scale: 1.7;
+        padding: 0.5rem;
+
+        svg {
+            fill: $light;
+        }
+    }
+
+    ul {
+        //border: 2px solid pink;
+    }
+
+    li {
+
+        .sub-menu {
+            //border: 2px solid green;
+        }
+
+        a {
+            color: $light;
+            font-family: $font-heading;
+            font-weight: $bold;
+            font-size: 1.5rem;
+            padding: 1rem;
+            text-align: right;
+        }
+
+        &:last-child {
+            padding-bottom: 1rem;
+        }
+    }
+
+    @media(min-width: 57em){
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .site-branding {
+            a {
+                max-width: none;
+            }
+        }
+
+        li {
+
+            .sub-menu {
+                display: flex;
+                flex-direction: column;
+                //background-color: $primaryLight;
+                z-index: 0;
+            }
+
+            a {
+                padding: 1rem 2rem;
+            }
+            
+            &:last-child{
+                //BUTTON MIXIN HERE
+                padding-bottom: 0;
+            }
+        }
+    }
+}
