@@ -28,7 +28,7 @@ if ( function_exists( 'get_field' ) ) :
     //output the logo and link for all featured sponsors with the taxonomy 'featured'
     if ( $featured_sponsors->have_posts() ) : ?>
 
-        <section class="featured-sponsors-section"> 
+        <section class="featured-sponsors-section sponsor-types"> 
 
             <h2 class="featured-sponsors-title">Proudly Sponsored by:</h2> <?php
 
@@ -45,7 +45,7 @@ if ( function_exists( 'get_field' ) ) :
 
                     <div class="single-sponsor">
 
-                        <p><?php echo $company_name; ?></p>
+                        <p><?php //echo $company_name; ?></p>
                         <a href="<?php echo get_field( 'link' ); ?>" target="_blank"> <?php 
                             echo $sponsor_logo; ?>
                         </a>

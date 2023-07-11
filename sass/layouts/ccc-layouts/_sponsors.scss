@@ -1,0 +1,48 @@
+.sponsor-types {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .single-sponsor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 22em;
+        margin: 1.5rem 0;
+
+        img + a {
+            color: $dark;
+            font-family: $font-body;
+            font-weight: $bold;
+            margin-top: 1.5rem;
+        }
+            
+        img {
+            height: auto;
+            width: 300px;
+            object-fit: cover;
+        }
+    }
+
+    @media (min-width: 50em) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-end;
+
+        h2 {
+            text-align: center;
+            flex-basis: 100%;
+        }
+
+        .single-sponsor {
+            margin: 2rem;
+        }
+    }
+}
+
+.sponsor-button {
+    display: flex;
+    justify-content: center;
+    //BUTTON MIXIN HERE
+}

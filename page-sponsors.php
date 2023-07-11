@@ -22,7 +22,7 @@ get_header();
 	while (have_posts()) :
 		the_post();
 
-		get_template_part('template-parts/content', 'page');
+		get_template_part('template-parts/content', '');
 
 		// If comments are open or we have at least one comment, load up the comment template.
 		if (comments_open() || get_comments_number()) :
@@ -30,6 +30,8 @@ get_header();
 		endif;
 
 	endwhile; // End of the loop.
+
+	?><div class="sponsor-wrapper"><?php
 
 	$taxonomy  = 'conference-sponsors-taxonomy';
 		$terms = get_terms(
@@ -71,6 +73,8 @@ get_header();
 								echo wp_get_attachment_image( $image, $size );
 							}
 
+							
+
 							$link = get_field('link');
 							if ($link){
 								$link_url = $link['url'];
@@ -85,14 +89,16 @@ get_header();
 							?> </div> <?php
 						}
 					}
-					
 					wp_reset_postdata();
 				}
 				?> </section> <?php
 			}
-		}
+		} ?>
 
-	?>
+		<a class="sponsor-button" href="<?php echo esc_url(get_permalink(281)); ?>">Become A Sponsor</a>
+				<?php
+
+	?> </div> 
 
 </main><!-- #main -->
 
