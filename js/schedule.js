@@ -35,6 +35,7 @@ function filterSchedule() {
   }
 }
 
+// Day 1/2
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -47,4 +48,14 @@ function openTab(evt, tabName) {
   }
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.classList.add("active");
+}
+
+// Accordion
+function toggleAccordion(eventId) {
+  var panel = document.getElementById(eventId);
+  panel.classList.toggle("active");
+  var content = panel.querySelector(".panel");
+  content.style.display = content.style.display === "none" ? "block" : "none";
+  var arrow = panel.querySelector(".arrow");
+  arrow.classList.toggle("down");
 }

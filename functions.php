@@ -276,3 +276,30 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 //image size for sponsors
 //add_image_size( 'sponsor', 415, 75, true );
+
+// Remove placeholder image in tickets page
+remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+
+// Remove ticket detail link 
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+
+
+// Add the description below the price
+add_action('woocommerce_after_shop_loop_item', 'display_product_description', 15);
+function display_product_description()
+{
+	global $product;
+	echo '<h3 class="product-title">' . $product->get_title() . '</h3>';
+	echo '<div class="product-price">' . $product->get_price_html() . '</div>';
+	echo '<div class="product-description">' . $product->get_description() . '</div>';
+	echo '<a href="' . esc_url($product->add_to_cart_url()) . '" class="button">' . __('Buy Now', 'woocommerce') . '</a>';
+}
+
+// Remove the price
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
+
+// Remove title
+remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
+
+// Remove description 
+remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_excerpt', 10);

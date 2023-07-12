@@ -22,16 +22,16 @@ get_header();
 	while (have_posts()) :
 		the_post();
 
-		get_template_part('template-parts/content', 'page');
+		echo "<h1 id='entry-title'>Tickets</h1>";
 
 		// Display Tickets 
 		if (class_exists('WooCommerce')) {
 			// Display General Admission tickets
-			echo "<h2>General</h2>";
+			echo "<h2 class='ticketClass'>General</h2>";
 			echo do_shortcode('[products category="general"]');
 
 			// Display VIP tickets
-			echo "<h2>VIP</h2>";
+			echo "<h2 class='ticketClass'>VIP</h2>";
 			echo do_shortcode('[products category="vip"]');
 		}
 
@@ -46,5 +46,13 @@ get_header();
 </main><!-- #main -->
 
 <?php
+function move_description_under_price()
+{
+	remove_action('woocommerce_after_shop_loop_item_title', 'tppdil_description', 20);
+	add_action('woocommerce_after_shop_loop_item_title', 'tppdil_description', 30);
+}
+
+add_action('woocommerce_before_shop_loop', 'move_description_under_price');
+
 get_footer();
 ?>
