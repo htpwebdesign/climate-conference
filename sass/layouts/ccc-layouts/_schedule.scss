@@ -1,0 +1,94 @@
+body.post-type-archive-conference-events {
+    #button-container { 
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+    #industry-type, #event-type { 
+        padding: 0.3rem 0.5rem;
+        border-radius: 5rem;
+        margin-bottom: 1rem;
+    }
+    .event { 
+        border: 1px solid $black;
+        margin: 2rem 0;
+        padding: 1rem;
+    }
+}
+
+
+@media (min-width: 20rem) {
+    .site-main {
+        margin: 0 1rem;
+        .industry-type-container, .event-container { 
+            width: 100%;
+            #industry-type, #event-type {
+                width: 12rem;
+            }
+        }
+    .event-title { 
+        font-size: 1.2rem;
+    }
+    }
+}
+.site-main { 
+    height: 100vh;
+}
+
+// Accordion 
+.event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  
+    .event-details {
+      flex-grow: 1;
+  
+      .start-time {
+        margin-bottom: 5px;
+      }
+  
+      .event-title {
+        margin-top: 0;
+      }
+    }
+  
+    .toggle-button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+  
+      .arrow {
+        width: 24px;
+        height: 24px;
+        fill: #000;
+        transition: transform 0.3s ease-in-out;
+        transform: rotate(180deg); /* Initial rotation */
+      }
+    }
+  
+    .panel {
+      display: none;
+  
+      &.open {
+        display: block;
+  
+        .arrow {
+          transform: rotate(0deg); /* Rotate 180 degrees on open */
+        }
+      }
+    }
+  }
+  
+ 
+  
+
+  
+ 
+
+
+  
+
+  
