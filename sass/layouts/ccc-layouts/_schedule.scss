@@ -1,9 +1,4 @@
 body.post-type-archive-conference-events {
-    #button-container { 
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
-    }
     #industry-type, #event-type { 
         padding: 0.3rem 0.5rem;
         border-radius: 5rem;
@@ -14,25 +9,10 @@ body.post-type-archive-conference-events {
         margin: 2rem 0;
         padding: 1rem;
     }
-}
-
-
-@media (min-width: 20rem) {
-    .site-main {
-        margin: 0 1rem;
-        .industry-type-container, .event-container { 
-            width: 100%;
-            #industry-type, #event-type {
-                width: 12rem;
-            }
-        }
-    .event-title { 
-        font-size: 1.2rem;
+    #event-type, #industry-type{
+        border: 1px solid $black;
     }
-    }
-}
-.site-main { 
-    height: 100vh;
+
 }
 
 // Accordion 
@@ -59,6 +39,10 @@ body.post-type-archive-conference-events {
       border: none;
       outline: none;
       cursor: pointer;
+      position: relative;
+    // left: 28rem;
+    // bottom: 3rem;
+    // Arrow on the right side
   
       .arrow {
         width: 24px;
@@ -81,7 +65,86 @@ body.post-type-archive-conference-events {
       }
     }
   }
+
+
+
+// Media Query 
+
+@media (min-width: 20rem) {
+    .site-main {
+      margin: 0 1rem;
   
+      .tab-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        .tablink-1 {
+            margin-right: 2rem;
+        }
+      }
+      .industry-type-container {
+          .conference-industry-type {
+              margin-right: 0.8rem;
+          }
+        #industry-type {
+          width: 15rem;
+        }
+    }
+        .event-container {
+        .conference-event-type {
+            margin-right: 0.8rem;
+        }
+        #event-type { 
+            width: 15rem;
+        }
+    }
+      .event-title {
+        font-size: 1.2rem;
+      }
+    }
+}
+
+  
+  
+
+  @media (min-width: 47.93rem) {
+      .master-schedule-filter-container {
+          display: flex;
+      }
+    .button-container {
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 1rem;
+    }
+  
+    .schedule-filter-options {
+        display: flex;
+        margin-left: auto;
+        margin-right: 1rem;
+      .industry-type-container {
+        margin: 0 1rem 0 3rem; 
+      }
+  }
+}
+
+
+  @media (min-width: 63.75rem) {
+    .event-list {
+      width: 60rem;
+      margin-left: auto;
+      margin-right: auto;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  .site-main {
+    height: 100vh;
+  }
+  
+
+
  
   
 
