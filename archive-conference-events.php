@@ -21,16 +21,7 @@ get_header();
             ?>
         </header><!-- .page-header -->
 
-        <!-- Day 1/2 Buttons -->
-        <div class="button-container" id="button-container">
-            <div class="tab-container">
-                <button class="tablink" onclick="openTab(event, 'day1')">Day 1</button>
-                <button class="tablink" onclick="openTab(event, 'day2')">Day 2</button>
-            </div>
-        </div>
         <?php
-
-
         // Industry / Event Taxonomies 
         $industry = isset($_GET['conference-industry-type']) ? sanitize_text_field($_GET['conference-industry-type']) : '';
         $event = isset($_GET['conference-event-type']) ? sanitize_text_field($_GET['conference-event-type']) : '';
@@ -79,46 +70,58 @@ get_header();
 
         ?>
 
-        <!-- Industry -->
-        <div class="industry-type-container">
-            <label for="conference-industry-type">Industry: </label>
-            <select name="conference-industry-type" id="industry-type" onchange="filterSchedule()">
-                <option value="all" selected="selected" class="industry-options">All</option>
-                <?php
-                // Grab all of the terms in conference-event-tax
-                $industry_terms = get_terms(array(
-                    'taxonomy'   => 'conference-industry-type'
-                ));
-                // Display all options 
-                foreach ($industry_terms as $term) {
-                    $option_value = 'conference-industry-type-' . $term->slug;
-                    $option_label = $term->name;
-                    echo '<option value="' . esc_attr($option_value) . '">' . esc_html($option_label) . '</option>';
-                }
-                ?>
-            </select>
-        </div>
+        <!-- Day 1/2 Buttons -->
+        <div class="master-schedule-filter-container">
+            <div class="button-container" id="button-container">
+                <div class="tab-container">
+                    <button class="tablink tablink-1" onclick="openTab(event, 'day1')">Day 1</button>
+                    <button class="tablink" onclick="openTab(event, 'day2')">Day 2</button>
+                </div>
+            </div>
 
-        <!-- Event -->
-        <div class="event-container">
-            <label for="conference-event-type">Event Type: </label>
-            <select name="conference-event-type" id="event-type" onchange="filterSchedule()">
-                <option value="all" selected="selected" class="event-options">All</option>
-                <?php
-                // Grab all of the terms in conference-event-tax
-                $event_terms = get_terms(array(
-                    'taxonomy'   => 'conference-event-type'
-                ));
-                // Display all options 
-                foreach ($event_terms as $term) {
-                    $option_value = 'conference-event-type-' . $term->slug;
-                    $option_label = $term->name;
-                    echo '<option value="' . esc_attr($option_value) . '">' . esc_html($option_label) . '</option>';
-                }
-                ?>
-            </select>
-        </div>
+            <!-- Industry -->
+            <div class="schedule-filter-options">
+                <div class="filter-container industry-type-container">
+                    <label for="conference-industry-type">Industry: </label>
+                    <select name="conference-industry-type" id="industry-type" onchange="filterSchedule()">
+                        <option value="all" selected="selected" class="industry-options">All</option>
+                        <?php
+                        // Grab all of the terms in conference-event-tax
+                        $industry_terms = get_terms(array(
+                            'taxonomy'   => 'conference-industry-type'
+                        ));
+                        // Display all options 
+                        foreach ($industry_terms as $term) {
+                            $option_value = 'conference-industry-type-' . $term->slug;
+                            $option_label = $term->name;
+                            echo '<option value="' . esc_attr($option_value) . '">' . esc_html($option_label) . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
 
+                <!-- Event -->
+                <div class="filter-container event-container">
+                    <label for="conference-event-type">Event: </label>
+                    <select name="conference-event-type" id="event-type" onchange="filterSchedule()">
+                        <option value="all" selected="selected" class="event-options">All</option>
+                        <?php
+                        // Grab all of the terms in conference-event-tax
+                        $event_terms = get_terms(array(
+                            'taxonomy'   => 'conference-event-type'
+                        ));
+                        // Display all options 
+                        foreach ($event_terms as $term) {
+                            $option_value = 'conference-event-type-' . $term->slug;
+                            $option_label = $term->name;
+                            echo '<option value="' . esc_attr($option_value) . '">' . esc_html($option_label) . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- Day 1 -->
         <div id="day1" class="tabcontent">
             <?php
             // Display events for day 1
@@ -171,6 +174,12 @@ get_header();
                                 <p class="start-time"><?php echo 'Start Time: ' . $formatted_start_time; ?></p>
                                 <h2 class="event-title"><?php echo $title; ?></h2>
                             </div>
+
+                            <div class="panel">
+                                <p><b>Industry:</b> <?php echo $industry[0]->name; ?></p>
+                                <p><b>Featuring:</b> <?php echo $speaker_name; ?></p>
+                                <p><?php echo $description; ?></p>
+                            </div>
                             <button class="toggle-button" onclick="toggleAccordion('<?php echo $post_type . '-' . $event_id; ?>')">
                                 <!-- Arrow  -->
                                 <svg class="arrow" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -179,11 +188,6 @@ get_header();
                                 <path d="M7 10l5 5 5-5z"></path>
 
                             </button>
-                            <div class="panel">
-                                <p><b>Industry:</b> <?php echo $industry[0]->name; ?></p>
-                                <p>Featuring: <?php echo $speaker_name; ?></p>
-                                <p><?php echo $description; ?></p>
-                            </div>
                         </div>
 
             <?php
@@ -292,7 +296,7 @@ get_header();
 </main><!-- #main -->
 
 <?php
-// get_footer();
+get_footer();
 ?>
 
 
