@@ -1,0 +1,57 @@
+// Media Query 
+@media (min-width: 20rem) {
+    .faq-question-container {
+        border: 1px solid $black;
+        padding: 1rem;
+    }
+}
+// Accordion 
+.accordion {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+      
+      .faq-question-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        
+        .faq-question-text {
+          margin-bottom: 5px;
+        }
+              
+      .faq-answer {
+        margin-top: 10px;
+      }
+            
+        .faq-collapse {
+        display: none;
+        
+        &.open {
+          display: block;
+        }
+      }
+      
+      .faq-btn {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        position: relative;
+      }
+      
+      .arrow-faq {
+        width: 24px;
+        height: 24px;
+        fill: #000;
+        transition: transform 0.3s ease-in-out;
+        transform: rotate(180deg);
+      }
+
+    }
+  }
+  
+
+  

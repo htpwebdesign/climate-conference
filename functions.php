@@ -190,6 +190,9 @@ function climate_conference_scripts()
 
 	wp_enqueue_script('climate-conference-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
+	// FAQ accordion 
+	wp_enqueue_script('faq-page-functions', get_template_directory_uri() . '/js/faq.js', array(), _S_VERSION, false);
+
 
 	// For schedule.js
 	wp_enqueue_script('conference-event-schedule', get_template_directory_uri() . '/js/schedule.js', array(), _S_VERSION, false);

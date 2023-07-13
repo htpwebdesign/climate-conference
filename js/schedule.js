@@ -52,10 +52,10 @@ function openTab(evt, tabName) {
 
 // Accordion
 function toggleAccordion(eventId) {
-  var panel = document.getElementById(eventId);
+  let panel = document.getElementById(eventId);
   panel.classList.toggle("active");
-  var content = panel.querySelector(".panel");
+  let content = panel.querySelector(".panel");
   content.style.display = content.style.display === "none" ? "block" : "none";
-  var arrow = panel.querySelector(".arrow");
+  let arrow = panel.querySelector(".arrow");
   arrow.classList.toggle("down");
 }
