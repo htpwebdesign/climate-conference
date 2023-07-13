@@ -14,16 +14,17 @@ get_header();
 
 <main id="primary" class="site-main"> <?php
 
-    faq_section('general');
+                                        faq_section('about');
 
-    faq_section('faq');
+                                        faq_section('faq');
 
-    faq_section('about');
+                                        faq_section('general');
 
-    // contact form here
-    echo do_shortcode('[gravityform id="4" title="true"]'); ?>
+
+                                        // contact form here
+                                        echo do_shortcode('[gravityform id="4" title="true"]'); ?>
 
 </main><!-- #main --> <?php
 
-get_footer();
-?>
+                        get_footer();
+                        ?>
