@@ -14,3 +14,16 @@
 	background-color: $primaryLight;
 	color: white;
 }
+
+// Call to action <a> tags
+@mixin call-to-action {
+	display: block;
+	color: $color__background-body;
+	background-color: $color__call_to_action;
+	font-weight: bold;
+	font-size: 1.25rem;
+	padding: .5rem;
+	border-radius: 5rem;
+	text-decoration: none;
+	width: fit-content;
+}

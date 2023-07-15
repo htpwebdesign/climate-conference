@@ -31,7 +31,7 @@ if ( function_exists( 'get_field' ) ) :
 
         <h2 class="featured-speakers-title">Featured Speakers:</h2>
 
-        <div class="featured-speakers-container"> <?php
+        <div class="speaker-slider"> <?php
 
             while ($featured_speakers->have_posts()) :
 
@@ -48,7 +48,7 @@ if ( function_exists( 'get_field' ) ) :
 
                     <div class="single-speaker">
                         
-                        <a href="<?php echo get_permalink($post->ID) ?>" target="_blank"> 
+                        <a class="speaker-info" href="<?php echo get_permalink($post->ID) ?>" target="_blank"> 
                             <?php echo $speaker_portrait; ?>
                             <p><?php echo $speaker_name; ?></p>
                             <p><?php echo $speaker_title; ?></p>

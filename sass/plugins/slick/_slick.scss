@@ -98,3 +98,23 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+.slick-next, .slick-prev{
+    z-index: 100;
+    width: 50px;
+    height: 81px;
+    position: absolute;
+    color: transparent;
+    border: none;
+    top: 35%;
+}
+
+.slick-next {
+    background: url(js/slick-arrows/next-arrow.png);
+    right: -.5rem;
+}
+
+.slick-prev {
+    background: url(js/slick-arrows/prev-arrow.png);
+    left: -.5rem;
+}
+
