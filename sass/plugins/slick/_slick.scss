@@ -110,11 +110,13 @@
 
 .slick-next {
     background: url(js/slick-arrows/next-arrow.png);
-    right: -.5rem;
+    right: 1rem;
+    background-repeat: no-repeat;
 }
 
 .slick-prev {
     background: url(js/slick-arrows/prev-arrow.png);
-    left: -.5rem;
+    left: 1rem;
+    background-repeat: no-repeat;
 }
 
