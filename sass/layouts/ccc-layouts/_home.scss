@@ -1,0 +1,336 @@
+.home-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-description {
+    margin: 0;
+    color: transparent;
+}
+
+.hero-container {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    top: 0;
+}
+
+.hero-slider {
+    width: 100vw;
+    height: fit-content;
+    position: absolute;
+    left: -1rem;
+    
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.hero-text {
+    display: block;
+    position: absolute;
+    padding: 1rem .5rem;
+    z-index: 1000;
+    color: $color__background-body;
+
+    h1 {
+        font-size: 1.75rem;
+        margin: .5rem 0rem;
+
+        @media (min-width: 48rem) {
+            font-size: 2.25rem;
+        }
+
+    }
+
+    p {
+        margin: 0;
+        font-weight: $reg;
+        @media (min-width:48rem) {
+            font-size: 1.5rem;
+            font-weight: $bold;
+        }
+    }
+}
+
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    flex: wrap;
+    justify-content: space-around;
+    margin: 2rem auto;
+
+    @media(min-width: 48rem) {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+}
+
+.call-to-action {
+    @include call-to-action;
+    margin: 2rem auto;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.hero-lower-subtext {
+
+    margin: 0 1rem;
+
+    :first-child {
+        margin-top: 2rem;
+    }
+}
+
+.featured-industry-section {
+
+    margin: 1.5rem auto;
+
+    .featured-industry-nav {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    
+        @media (min-width: 48rem) {
+            flex-direction: row;
+            justify-content: space-around;
+    
+        }
+    
+        .industry-item {
+            width: 15rem;
+            height: 10rem;
+            display: flex;
+            align-self: center;
+            margin: .5rem 1rem;
+    
+            a {
+                text-decoration: none;
+                color: $color__background-body;
+                padding: 1rem;
+                text-align: center;
+                width: fit-content;
+                height: fit-content;
+                font-size: 1.25rem;
+                margin: auto;
+                vertical-align: middle;
+                font-weight: $bold;
+            }
+    
+            &:first-child {
+                background: url('sass/components/media/images/recyclebin.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+    
+            &:nth-child(2) {
+                background: url('sass/components/media/images/electric-vehicle.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+    
+            &:nth-child(3) {
+                background: url('sass/components/media/images/trees.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+    
+            &:nth-child(4) {
+                background: url('sass/components/media/images/plants-and-building.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 48rem) {
+        .featured-speaker-container {
+            display: flex;
+            flex: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+        
+        .single-speaker {
+            max-width: 25rem;
+            margin: 1rem;
+            width: fit-content;
+        }
+    }
+
+}
+
+
+.single-speaker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    width: 100%;
+    height: auto;
+    
+    //slick bug fix - still applies `opacity: 0` when unslicked
+    @media (min-width: 48rem) {
+        opacity: 1 !important;
+    }
+
+    img {
+        width: 75%;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+
+    .speaker-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem auto;
+        width: 100%;
+        height: auto;
+        text-decoration: none;
+
+        p {
+            margin: 0 auto;
+            text-align: center;
+            width: fit-content;
+            color: $dark;
+
+            &:nth-child(2) {
+                font-size: 1.25rem;
+                font-weight: $bold;
+            }
+        }
+    }
+}
+
+.statistics {
+
+    margin: 1rem auto;
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem 0;
+        
+        &:first-child {
+            background-color: #5C8001;
+        }
+
+        
+        
+        &:nth-child(3) {
+            background-color: #5296A5;
+        }
+
+        
+    }
+    
+    p {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+        height: fit-content;
+        font-size: 1.25rem;
+        font-weight: $bold;
+        color: $color__background-body;
+        padding: 1rem;
+    }
+
+
+    @media (min-width: 48rem) {
+        display: grid;
+        grid-template-areas: 
+          "stat-1 grass"
+          "ocean stat-2";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin: 1rem auto;
+        position: relative;
+        left: -1rem;
+        width: 100vw;
+
+        div:nth-child(1) {
+            grid-area: stat-1;
+        }
+
+        div:nth-child(2) {
+            grid-template-areas: 'grass';
+            background: url('sass/layouts/ccc-layouts/stats-images/grass.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+        }
+
+        div:nth-child(3) {
+            grid-area: stat-2;
+        }
+
+        div:nth-child(4) {
+            grid-template-areas: 'ocean';
+            background: url('sass/layouts/ccc-layouts/stats-images/ocean.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+        }
+    }
+}
+
+.map-section {
+
+    .venue-details {
+    
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    
+        p {
+            margin: 0;
+    
+            &:first-child {
+                font-size: 1.25rem;
+                font-weight: $bold;
+            }
+    
+            &:nth-child(3) {
+                margin-top: 1rem;
+            }
+    
+        }
+    
+        a, a:visited {
+            text-decoration: none;
+            color: $black;
+        }
+    }
+
+    @media(min-width: 48rem) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem auto;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+
+        .acf-map {
+            max-width: 60%;
+        }
+    
+        .venue-details {
+            width: fit-content;
+            height: 50%;
+            margin: 0 auto;
+            padding-left: 1rem;
+        }
+    }
+}
