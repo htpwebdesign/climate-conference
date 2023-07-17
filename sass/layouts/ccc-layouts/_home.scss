@@ -11,13 +11,17 @@
 .hero-container {
     margin: 0 auto;
     position: relative;
-    width: 100%;
+    width: 100vw;
+    max-height: 1080px;
+    padding-bottom: 56.25%;
+    overflow: hidden;
     top: 0;
+    left: -1rem;
 }
 
 .hero-slider {
     width: 100vw;
-    height: fit-content;
+    height: 100%;
     position: absolute;
     left: -1rem;
     
