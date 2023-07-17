@@ -37,11 +37,20 @@
     h1 {
         font-size: 1.75rem;
         margin: .5rem 0rem;
+
+        @media (min-width: 48rem) {
+            font-size: 2.25rem;
+        }
+
     }
 
     p {
         margin: 0;
-        font-weight: $reg
+        font-weight: $reg;
+        @media (min-width:48rem) {
+            font-size: 1.5rem;
+            font-weight: $bold;
+        }
     }
 }
 
