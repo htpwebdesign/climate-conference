@@ -112,9 +112,11 @@ get_header(); ?>
                 <div>
                     <p> <?php the_field( 'statistics_top_right' ); ?> </p>    
                 </div>
+                <div></div>
                 <div>
                     <p> <?php the_field( 'statistics_bottom_left' ); ?> </p>
                 </div>
+                <div></div>
             </figure> <?php 
         endif; 
 
@@ -127,38 +129,41 @@ get_header(); ?>
             <a class="call-to-action" href="<?php esc_url( $call_to_action_4[ 'url' ] ) ?>"><?php 
                 echo esc_html( $call_to_action_4[ 'title' ] ) ?>
             </a> <?php
-        endif;
+        endif; ?>
 
-        //google maps section
-        if( get_field( 'venue_map' ) ): 
-            $venue_map = get_field( 'venue_map' ); ?>
+        <section class="map-section"> <?php
+            //google maps section
+            if( get_field( 'venue_map' ) ): 
+                $venue_map = get_field( 'venue_map' ); ?>
 
-            <div class="acf-map" data-zoom="16">
-                <div class="marker" 
-                    data-lat="<?php echo esc_attr( $venue_map[ 'lat' ] ); ?>" 
-                    data-lng="<?php echo esc_attr( $venue_map[ 'lng' ] ); ?>">
-                </div>
-            </div> <?php 
-        endif; 
+                <div class="acf-map" data-zoom="16">
+                    <div class="marker" 
+                        data-lat="<?php echo esc_attr( $venue_map[ 'lat' ] ); ?>" 
+                        data-lng="<?php echo esc_attr( $venue_map[ 'lng' ] ); ?>">
+                    </div>
+                </div> <?php 
+            endif; 
 
-        $venue_name = get_field( 'venue_name' );
-        $venue_address = get_field( 'venue_address' );
-        $venue_phone_number = get_field( 'venue_phone_number' );
-        $conference_email = get_field( 'conference_e-mail' );
+            $venue_name = get_field( 'venue_name' );
+            $venue_address = get_field( 'venue_address' );
+            $venue_phone_number = get_field( 'venue_phone_number' );
+            $conference_email = get_field( 'conference_e-mail' );
 
-        if ( $venue_name ) : ?>
-            <section class="venue-details">
-                <p><?php echo $venue_name; ?></p>
-                <p><?php echo $venue_address; ?></p>
-                <p><?php echo $venue_phone_number; ?></p>
-                <a href='mailto:<?php echo $conference_email; ?>'> <?php 
-                    echo $conference_email; ?>
-                </a>
-            </section> <?php
-        endif;
-    else: ?>
-        <p>Oops! Something went wrong. Please check back later.</p> <?php
-    endif; ?>
+            if ( $venue_name ) : ?>
+                <section class="venue-details">
+                    <p><?php echo $venue_name; ?></p>
+                    <p><?php echo $venue_address; ?></p>
+                    <p><?php echo $venue_phone_number; ?></p>
+                    <a href='mailto:<?php echo $conference_email; ?>'> <?php 
+                        echo $conference_email; ?>
+                    </a>
+                </section> <?php
+            endif;
+            else: ?>
+            <p>Oops! Something went wrong. Please check back later.</p> <?php
+            endif; ?>
+        </section>
+
 
 </main><!-- #main --> <?php
 get_footer();
