@@ -298,7 +298,3 @@ get_header();
 <?php
 get_footer();
 ?>
-
-
-
-<!-- add built by in footer with links to portfolio -->

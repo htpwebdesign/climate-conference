@@ -96,6 +96,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Plugins
 --------------------------------------------------------------*/
 
+/* Slick Slider/Carousel
+--------------------------------------------- */
+@import "plugins/slick/slick";
+
 /* Jetpack infinite scroll
 --------------------------------------------- */
 @import "plugins/jetpack/infinite-scroll";
