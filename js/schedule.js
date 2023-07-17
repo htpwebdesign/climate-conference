@@ -58,4 +58,15 @@ function toggleAccordion(eventId) {
   content.style.display = content.style.display === "none" ? "block" : "none";
   let arrow = panel.querySelector(".arrow");
   arrow.classList.toggle("down");
+
+  // Rotate arrow if active 180 degrees
+  if (panel.classList.contains("active")) {
+    content.style.display = "block";
+    content.style.transition = "transform 0.7s ease";
+    arrow.style.transform = "rotate(0deg)";
+  } else {
+    content.style.display = "none";
+    content.style.transition = "transform 0.7s ease";
+    arrow.style.transform = "rotate(180deg)";
+  }
 }
