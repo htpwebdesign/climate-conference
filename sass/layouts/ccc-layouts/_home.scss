@@ -23,6 +23,19 @@
     height: auto;
     position: absolute;
 
+    @media (min-width: 48rem) {
+        .slick-prev {
+            left: 2rem;
+        }
+    
+        .slick-next {
+            right: 2rem;
+        }
+
+    }
+
+
+
     
     img {
         width: 100%;
@@ -178,7 +191,11 @@
     }
 
 }
-
+.speaker-slider {
+    .slick-arrow {
+        height: 30%;
+    }
+}
 
 .single-speaker {
     display: flex;
@@ -228,6 +245,10 @@
 .statistics {
 
     margin: 1rem auto;
+
+    :nth-child(2) {
+        display: none;
+    }
     
     div {
         display: flex;
@@ -237,6 +258,7 @@
         
         &:first-child {
             background-color: #5C8001;
+            margin-bottom: 0;
         }
 
         
@@ -277,6 +299,7 @@
         }
 
         div:nth-child(2) {
+            display: block;
             grid-template-areas: 'grass';
             background: url('sass/layouts/ccc-layouts/stats-images/grass.webp');
             background-repeat: no-repeat;
