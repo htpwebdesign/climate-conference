@@ -13,7 +13,6 @@
     position: relative;
     width: 100vw;
     max-height: 1080px;
-    padding-bottom: 56.25%;
     overflow: hidden;
     top: 0;
     left: -1rem;
@@ -21,9 +20,9 @@
 
 .hero-slider {
     width: 100vw;
-    height: 100%;
+    height: auto;
     position: absolute;
-    left: -1rem;
+
     
     img {
         width: 100%;
@@ -38,12 +37,20 @@
     z-index: 1000;
     color: $color__background-body;
 
+    @media (min-width: 48rem) {
+        padding-left: 3rem;
+    }
+
     h1 {
         font-size: 1.75rem;
         margin: .5rem 0rem;
 
         @media (min-width: 48rem) {
             font-size: 2.25rem;
+        }
+
+        @media(min-width: 65rem) {
+            font-size: 5rem;
         }
 
     }
@@ -54,6 +61,10 @@
         @media (min-width:48rem) {
             font-size: 1.5rem;
             font-weight: $bold;
+        }
+
+        @media(min-width: 65rem) {
+            font-size: 2.5rem;
         }
     }
 }
