@@ -1,0 +1,38 @@
+.speaker-info {
+    display: flex;
+    align-items: center;
+    margin-left: 6rem;
+    padding: 3rem;
+  
+    .speaker-info-acf {
+        width: 50%;
+    }
+
+    .portrait {
+        flex: 0 0 auto;
+        margin-right: 20px;
+
+        img {
+            border-radius: 50%;
+            border: 1px solid #5D8001;
+        }
+    }
+
+    .speaker-details {
+        flex: 1 1 auto;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+
+        .portrait {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.job-title-and-company {
+    margin-left: 7rem;
+}
+
