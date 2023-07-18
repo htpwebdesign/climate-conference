@@ -21,13 +21,11 @@ jQuery(document).ready(function($){
         autoplay: false,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplaySpeed: 7000,
 
         responsive: [
             {
                 breakpoint: 768,
                 settings: {
-                    autoplay: true,
                     arrows: false
                 }
             }
