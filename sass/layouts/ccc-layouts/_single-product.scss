@@ -1,0 +1,27 @@
+.tppdil_description {
+    display: none;
+}
+
+
+.single_add_to_cart_button {
+    margin-bottom: 1rem;
+}
+
+
+
+.single-product-main {
+    text-align: center;
+    .woocommerce-product-gallery {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .product-description {
+        display: none;
+    }
+    .tabs {
+        display: none;
+    }
+    .price {
+        font-size: 1.2rem;
+    }
+}
