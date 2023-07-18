@@ -286,6 +286,9 @@ remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_l
 // Remove ticket detail link 
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 
+// Remove sku 
+add_filter('wc_product_sku_enabled', '__return_false');
+
 
 // Add the description below the price
 add_action('woocommerce_after_shop_loop_item', 'display_product_description', 15);
