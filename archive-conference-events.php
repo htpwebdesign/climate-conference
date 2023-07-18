@@ -145,31 +145,37 @@ get_header();
 
                 $events_query = new WP_Query($args);
 
+
+
+
+
                 // Check if there are events to display
                 if ($events_query->have_posts()) {
                     echo '<div class="event-list">';
                     while ($events_query->have_posts()) {
                         $events_query->the_post();
 
-                        $event_id      = get_the_ID(); // Get the ID of the current post
-                        $title         = get_the_title();
-                        $industry      = get_the_terms($event_id, 'conference-industry-type');
-                        $description   = get_field('event_information', $event_id);
-                        $start_time    = get_field('start_time', $event_id);
-                        $speaker_name  = get_field('conference-events', $event_id);
+                        $event_id = get_the_ID(); // Get the ID of the current event
+                        $title = get_the_title();
+                        $industry = get_the_terms($event_id, 'conference-industry-type');
+                        $description = get_field('event_information', $event_id);
+                        $start_time = get_field('start_time', $event_id);
+                        $event_speakers = get_field('featured_speakers', $event_id);
 
                         // Format start time
                         $formatted_start_time = date('g:i A', strtotime($start_time));
 
-                        $post_type = get_post_type(); // Get the current post type
+                        $post_type = get_post_type();
 
                         // Get all classes related to the CPT ID
                         $cpt_classes = get_post_class('', $event_id);
 
                         // Combine classes grabbed from CPT ID into a single string
                         $cpt_class_string = implode(' ', $cpt_classes);
+
+
             ?>
-                        <div class="event <?php echo $cpt_class_string; ?>" id="<?php echo $post_type . '-' . $event_id; ?>">
+                        <div class="event <?php echo $cpt_class_string . ' ' . $speaker_classes; ?>" id="<?php echo $post_type . '-' . $event_id; ?>">
                             <div class="event-details">
                                 <p class="start-time"><?php echo 'Start Time: ' . $formatted_start_time; ?></p>
                                 <h2 class="event-title"><?php echo $title; ?></h2>
@@ -177,7 +183,17 @@ get_header();
 
                             <div class="panel">
                                 <p><b>Industry:</b> <?php echo $industry[0]->name; ?></p>
-                                <p><b>Featuring:</b> <?php echo $speaker_name; ?></p>
+
+                                <p><b>Featuring:</b>
+                                    <?php
+                                    if ($event_speakers) {
+                                        foreach ($event_speakers as $speaker) {
+                                            echo get_the_title($speaker);
+                                        }
+                                    }
+                                    ?>
+                                </p>
+
                                 <p><?php echo $description; ?></p>
                             </div>
                             <button class="toggle-button" onclick="toggleAccordion('<?php echo $post_type . '-' . $event_id; ?>')">
@@ -186,10 +202,8 @@ get_header();
                                     <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
                                 </svg>
                                 <path d="M7 10l5 5 5-5z"></path>
-
                             </button>
                         </div>
-
             <?php
                     }
                     echo '</div>';
@@ -200,10 +214,11 @@ get_header();
                 wp_reset_postdata();
             }
 
-            // Call function to display day 1
+            // Call function to display day 1 events
             display_events_day1();
             ?>
         </div>
+
 
         <div id="day2" class="tabcontent">
             <?php
@@ -239,7 +254,7 @@ get_header();
                         $industry      = get_the_terms($event_id, 'conference-industry-type');
                         $description   = get_field('event_information', $event_id);
                         $start_time    = get_field('start_time', $event_id);
-                        $speaker_name  = get_field('conference-events', $event_id);
+                        $event_speakers = get_field('featured_speakers', $event_id);
 
                         // Format start time
                         $formatted_start_time = date('g:i A', strtotime($start_time));
@@ -267,7 +282,15 @@ get_header();
                             </button>
                             <div class="panel">
                                 <p><b>Industry:</b> <?php echo $industry[0]->name; ?></p>
-                                <p>Featuring: <?php echo $speaker_name; ?></p>
+                                <p><b>Featuring:</b>
+                                    <?php
+                                    if ($event_speakers) {
+                                        foreach ($event_speakers as $speaker) {
+                                            echo get_the_title($speaker);
+                                        }
+                                    }
+                                    ?>
+                                </p>
                                 <p><?php echo $description; ?></p>
                             </div>
                         </div>
