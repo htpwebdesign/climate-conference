@@ -32,9 +32,7 @@ function faq_section($section_name, $post_id = false, $format_value = true)
                                     <strong><?php echo get_sub_field('question'); ?></strong>
                                 </p>
                                 <div id="collapse-<?php echo $section_name . '-' . $i; ?>" class="faq-collapse">
-
                                     <?php echo get_sub_field('answer'); ?>
-
                                 </div>
                                 <button class="faq-btn" type="button" data-toggle="collapse" data-target="#collapse-<?php echo $collapse_id; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $collapse_id; ?>">
                                     <!-- Arrow -->

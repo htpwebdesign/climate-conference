@@ -11,15 +11,31 @@
 .hero-container {
     margin: 0 auto;
     position: relative;
-    width: 100%;
+    width: 100vw;
+    max-height: 1080px;
+    overflow: hidden;
     top: 0;
+    left: -1rem;
 }
 
 .hero-slider {
     width: 100vw;
-    height: fit-content;
+    height: auto;
     position: absolute;
-    left: -1rem;
+
+    @media (min-width: 48rem) {
+        .slick-prev {
+            left: 2rem;
+        }
+    
+        .slick-next {
+            right: 2rem;
+        }
+
+    }
+
+
+
     
     img {
         width: 100%;
@@ -31,17 +47,38 @@
     display: block;
     position: absolute;
     padding: 1rem .5rem;
-    z-index: 200;
+    z-index: 1000;
     color: $color__background-body;
+
+    @media (min-width: 48rem) {
+        padding-left: 3rem;
+    }
 
     h1 {
         font-size: 1.75rem;
         margin: .5rem 0rem;
+
+        @media (min-width: 48rem) {
+            font-size: 2.25rem;
+        }
+
+        @media(min-width: 65rem) {
+            font-size: 5rem;
+        }
+
     }
 
     p {
         margin: 0;
-        font-weight: $reg
+        font-weight: $reg;
+        @media (min-width:48rem) {
+            font-size: 1.5rem;
+            font-weight: $bold;
+        }
+
+        @media(min-width: 65rem) {
+            font-size: 2.5rem;
+        }
     }
 }
 
@@ -51,11 +88,17 @@
     flex: wrap;
     justify-content: space-around;
     margin: 2rem auto;
+
+    @media(min-width: 48rem) {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
 }
 
 .call-to-action {
     @include call-to-action;
-    margin: 1rem auto;
+    margin: 2rem auto;
     font-size: 1.5rem;
     padding: 1rem;
 }
@@ -69,57 +112,90 @@
     }
 }
 
-.featured-industry-nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.featured-industry-section {
 
-    .industry-item {
-        width: 15rem;
-        height: 10rem;
+    margin: 1.5rem auto;
+
+    .featured-industry-nav {
         display: flex;
+        flex-direction: column;
+        width: 100%;
         justify-content: center;
-        margin: .5rem 1rem;
-
-        a {
-            text-decoration: none;
-            color: $color__background-body;
-            padding: 1rem;
-            text-align: center;
-            width: fit-content;
-            height: fit-content;
-            font-size: 1.25rem;
-            margin: auto;
-            vertical-align: middle;
-            font-weight: $bold;
+    
+        @media (min-width: 48rem) {
+            flex-direction: row;
+            justify-content: space-around;
+    
         }
-
-        &:first-child {
-            background: url('sass/components/media/images/recyclebin.webp');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        &:nth-child(2) {
-            background: url('sass/components/media/images/electric-vehicle.webp');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        &:nth-child(3) {
-            background: url('sass/components/media/images/trees.webp');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        &:nth-child(4) {
-            background: url('sass/components/media/images/plants-and-building.webp');
-            background-size: cover;
-            background-repeat: no-repeat;
+    
+        .industry-item {
+            width: 15rem;
+            height: 10rem;
+            display: flex;
+            align-self: center;
+            margin: .5rem 1rem;
+    
+            a {
+                text-decoration: none;
+                color: $color__background-body;
+                padding: 1rem;
+                text-align: center;
+                width: fit-content;
+                height: fit-content;
+                font-size: 1.25rem;
+                margin: auto;
+                vertical-align: middle;
+                font-weight: $bold;
+            }
+    
+            &:first-child {
+                background: url('sass/components/media/images/recyclebin.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+    
+            &:nth-child(2) {
+                background: url('sass/components/media/images/electric-vehicle.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+    
+            &:nth-child(3) {
+                background: url('sass/components/media/images/trees.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+    
+            &:nth-child(4) {
+                background: url('sass/components/media/images/plants-and-building.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
         }
     }
 }
 
+
+@media (min-width: 48rem) {
+        .featured-speaker-container {
+            display: flex;
+            flex: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+        
+        .single-speaker {
+            max-width: 25rem;
+            margin: 1rem;
+            width: fit-content;
+        }
+    }
+
+}
+.speaker-slider {
+    .slick-arrow {
+        height: 30%;
+    }
+}
 
 .single-speaker {
     display: flex;
@@ -129,6 +205,11 @@
     margin: 2rem auto;
     width: 100%;
     height: auto;
+    
+    //slick bug fix - still applies `opacity: 0` when unslicked
+    @media (min-width: 48rem) {
+        opacity: 1 !important;
+    }
 
     img {
         width: 75%;
@@ -163,6 +244,12 @@
 
 .statistics {
 
+    margin: 1rem auto;
+
+    :nth-child(2) {
+        display: none;
+    }
+    
     div {
         display: flex;
         flex-direction: column;
@@ -171,13 +258,18 @@
         
         &:first-child {
             background-color: #5C8001;
+            margin-bottom: 0;
         }
 
-        &:nth-child(2) {
+        
+        
+        &:nth-child(3) {
             background-color: #5296A5;
         }
-    }
 
+        
+    }
+    
     p {
         display: block;
         margin: 0 auto;
@@ -188,29 +280,95 @@
         color: $color__background-body;
         padding: 1rem;
     }
+
+
+    @media (min-width: 48rem) {
+        display: grid;
+        grid-template-areas: 
+          "stat-1 grass"
+          "ocean stat-2";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin: 1rem auto;
+        position: relative;
+        left: -1rem;
+        width: 100vw;
+
+        div:nth-child(1) {
+            grid-area: stat-1;
+        }
+
+        div:nth-child(2) {
+            display: block;
+            grid-template-areas: 'grass';
+            background: url('sass/layouts/ccc-layouts/stats-images/grass.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+        }
+
+        div:nth-child(3) {
+            grid-area: stat-2;
+        }
+
+        div:nth-child(4) {
+            grid-template-areas: 'ocean';
+            background: url('sass/layouts/ccc-layouts/stats-images/ocean.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+        }
+    }
 }
 
-.venue-details {
+.map-section {
 
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-
-    p {
-        margin: 0;
-
-        &:first-child {
-            font-size: 1.25rem;
-            font-weight: $bold;
+    .venue-details {
+    
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    
+        p {
+            margin: 0;
+    
+            &:first-child {
+                font-size: 1.25rem;
+                font-weight: $bold;
+            }
+    
+            &:nth-child(3) {
+                margin-top: 1rem;
+            }
+    
         }
-
-        &:nth-child(3) {
-            margin-top: 1rem;
+    
+        a, a:visited {
+            text-decoration: none;
+            color: $black;
         }
-
     }
 
-    a, a:visited {
-        text-decoration: none;
-        color: $black;
+    @media(min-width: 48rem) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem auto;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+
+        .acf-map {
+            max-width: 60%;
+        }
+    
+        .venue-details {
+            width: fit-content;
+            height: 50%;
+            margin: 0 auto;
+            padding-left: 1rem;
+        }
     }
 }

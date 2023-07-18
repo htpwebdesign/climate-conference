@@ -105,18 +105,24 @@
     position: absolute;
     color: transparent;
     border: none;
-    top: 35%;
+    top: 37%;
 }
 
 .slick-next {
     background: url(js/slick-arrows/next-arrow.png);
-    right: 1rem;
+    right: 0;
     background-repeat: no-repeat;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .slick-prev {
     background: url(js/slick-arrows/prev-arrow.png);
     left: 1rem;
     background-repeat: no-repeat;
+    &:hover {
+        cursor: pointer;
+    }
 }
 

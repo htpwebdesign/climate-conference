@@ -7,30 +7,26 @@
 
 //Slick Carousel/Slider Base Code for Hero Slider on front-page.php
 //issue with `$` not registering despite script enqueuing, using `jQuery` until issue sorted
-jQuery(document).ready(function(){
+jQuery(document).ready(function($){
 
-    jQuery('.hero-slider').slick({
+    // $ = jQuery;
+    // $hero = $('.hero-slider');
+    // $speaker = $('.speaker-slider');
+
+    $('.hero-slider').slick({
         dots: false,
-        arrows: true,
         infinite: true,
+        arrows: true,
+        fade: true,
+        autoplay: false,
         slidesToShow: 1,
         slidesToScroll: 1,
-        fade: true,
 
         responsive: [
             {
-                breakpoint: 699,
+                breakpoint: 768,
                 settings: {
-                    autoplay: true,
-                    autoplaySpeed: 7000,
                     arrows: false
-                }
-            },
-            {
-                breakpoint: 700,
-                settings: {
-                    autoplay: false,
-                    arrows: true
                 }
             }
         ]
@@ -38,12 +34,27 @@ jQuery(document).ready(function(){
 
     })
 
-    jQuery('.speaker-slider').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade: true,
-    })
+    function handleSlick() {
+        if ($(window).width() < 768) {
+            if (!$('.speaker-slider').hasClass('slick-initialized')) {
+                $('.speaker-slider').slick({
+                    dots: false,
+                    arrows: true,
+                    infinite: true,
+                    fade: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                })
+            }
+            else {
+                if ($('.speaker-slider').hasClass('slick-initialized')) {
+                    $('.speaker-slider').slick('unslick');
+                }
+            }
+        }
+    }
+
+    handleSlick();
+    $(window).resize(handleSlick);
+
 })

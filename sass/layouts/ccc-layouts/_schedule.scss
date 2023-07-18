@@ -40,16 +40,13 @@ body.post-type-archive-conference-events {
       outline: none;
       cursor: pointer;
       position: relative;
-    // left: 28rem;
-    // bottom: 3rem;
-    // Arrow on the right side
   
       .arrow {
         width: 24px;
         height: 24px;
         fill: #000;
-        transition: transform 0.3s ease-in-out;
-        transform: rotate(180deg); /* Initial rotation */
+        transition: transform 0.4s ease-in-out;
+        transform: rotate(180deg); 
       }
     }
   
@@ -58,10 +55,6 @@ body.post-type-archive-conference-events {
   
       &.open {
         display: block;
-  
-        .arrow {
-          transform: rotate(0deg); /* Rotate 180 degrees on open */
-        }
       }
     }
   }

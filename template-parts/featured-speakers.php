@@ -31,7 +31,7 @@ if ( function_exists( 'get_field' ) ) :
 
         <h2 class="featured-speakers-title">Featured Speakers:</h2>
 
-        <div class="speaker-slider"> <?php
+        <div class="speaker-slider featured-speaker-container"> <?php
 
             while ($featured_speakers->have_posts()) :
 
