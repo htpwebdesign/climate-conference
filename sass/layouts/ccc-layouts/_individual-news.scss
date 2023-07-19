@@ -1,7 +1,27 @@
-.nav-news-subtitle {
-    margin-right: 30rem; 
+.nav-previous {
+    margin-right: 30rem;
 }
-.cat-links {
-    display: none;
+
+.nav-next {
+    margin-left: 10rem;
 }
-/*fix*/
+
+.site-main-news h1 {
+    margin-left: 3rem;
+}
+
+.site-main-news .post-thumbnail {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+    padding-top: 1rem;
+}
+
+.site-main-news .entry-content p {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+    padding-bottom: 1rem;
+}
