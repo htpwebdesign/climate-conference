@@ -4,7 +4,7 @@
 
     .site-branding {
         a {
-            margin: 1rem 0 0.5rem 1rem;
+            margin: 0.5rem;
             max-width: 150px;
         }
     }
@@ -23,15 +23,7 @@
         }
     }
 
-    ul {
-        //border: 2px solid pink;
-    }
-
     li {
-
-        .sub-menu {
-            //border: 2px solid green;
-        }
 
         a {
             color: $light;
@@ -63,7 +55,6 @@
             .sub-menu {
                 display: flex;
                 flex-direction: column;
-                //background-color: $primaryLight;s
             }
 
             a {
@@ -71,7 +62,6 @@
             }
             
             &:last-child{
-                //BUTTON MIXIN HERE
                 padding-bottom: 0;
             }
         }

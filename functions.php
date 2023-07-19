@@ -57,6 +57,7 @@ function climate_conference_setup()
 	register_nav_menus(
 		array(
 			'header' => esc_html__('Main Navigation', 'climate-conference'),
+			'footer' => esc_html__('Portfolios', 'climate-conference'),
 		)
 	);
 
