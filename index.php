@@ -22,40 +22,40 @@ get_header();
 	if (have_posts()) :
 
 		if (is_home() && !is_front_page()) :
-	?>
+			?>
 			<header>
 				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+				<h1 class="news-heading">News</h1> <!-- Add the news heading -->
 			</header>
-		<?php
+			<?php
 		endif;
 
 		/* Start the Loop */
 		while (have_posts()) :
 			the_post();
-			/*
-             * Include the Post-Type-specific template for the content.
-             * If you want to override this in a child theme, then include a file
-             * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-             */
-		?>
+			?>
 			<!-- <div data-aos="fade-up"> -->
 			<article class="article">
 				<a href="<?php the_permalink(); ?>">
-					<?php if (has_post_thumbnail()) : ?>
-						<div class="post-thumbnail">
-							<?php the_post_thumbnail('large'); ?>
-						</div><!-- .post-thumbnail -->
-					<?php endif; ?>
-					<header class="entry-header">
-						<h2 class="entry-title"><?php the_title(); ?></h2>
-					</header><!-- .entry-header -->
+					<div class="thumbnail-wrapper">
+						<?php if (has_post_thumbnail()) : ?>
+							<div class="post-thumbnail">
+								<?php the_post_thumbnail('large'); ?>
+							</div><!-- .post-thumbnail -->
+						<?php endif; ?>
+						<div class="entry-content-wrapper">
+							<header class="entry-header">
+								<h2 class="entry-title"><?php the_title(); ?></h2>
+							</header><!-- .entry-header -->
+							<div class="entry-content">
+								<?php the_excerpt(); ?>
+							</div><!-- .entry-content -->
+						</div><!-- .entry-content-wrapper -->
+					</div><!-- .thumbnail-wrapper -->
 				</a>
-				<div class="entry-content">
-					<?php the_excerpt(); ?>
-				</div><!-- .entry-content -->
 			</article>
 			<!-- </div> -->
-	<?php
+		<?php
 
 		endwhile;
 

@@ -56,7 +56,6 @@ get_header();
 
 			// Display speaker name and job title and company
 			if ($speaker_name || $job_title_and_company) {
-				echo '<div class="speaker-info">';
 				echo '<div class="job-title-and-company">';
 				if ($speaker_name) {
 					echo '<h1>' . $speaker_name . '</h1>';
@@ -67,7 +66,8 @@ get_header();
 				echo '</div>';
 			}
 
-			// Display speaker portrait
+			// Display speaker portrait	
+			echo '<section class="speaker-info">';
 			if ($portrait_id) {
 				echo '<div class="portrait">';
 				echo wp_get_attachment_image($portrait_id, 'medium');
@@ -94,20 +94,22 @@ get_header();
 			$next_speaker_link = get_permalink($next_speaker_id);
 			$next_speaker_title = get_the_title($next_speaker_id);
 
-			// Output previous and next navigation
-			echo '<div class="post-navigation">';
-			echo '<div class="nav-previous">';
-			if ($prev_speaker_id) {
-				echo '<a href="' . esc_url($prev_speaker_link) . '" rel="prev">' . esc_html__('Previous:', 'climate-conference') . ' ' . esc_html($prev_speaker_title) . '</a>';
-			}
-			echo '</div>';
+	// Output previous and next navigation
+echo '<div class="post-navigation">';
+echo '<div class="nav-previous">';
+if ($prev_speaker_id) {
+    echo '<a href="' . esc_url($prev_speaker_link) . '" rel="prev">&lt; See Previous</a>';
+}
+echo '</div>';
 
-			echo '<div class="nav-next">';
-			if ($next_speaker_id) {
-				echo '<a href="' . esc_url($next_speaker_link) . '" rel="next">' . esc_html__('Next:', 'climate-conference') . ' ' . esc_html($next_speaker_title) . '</a>';
-			}
-			echo '</div>';
-			echo '</div>';
+echo '<div class="nav-next">';
+if ($next_speaker_id) {
+    echo '<a href="' . esc_url($next_speaker_link) . '" rel="next">See Next &gt;</a>';
+}
+echo '</div>';
+echo '</div>';
+
+
 		} else {
 			echo '<p>Sorry, the speaker could not be found.</p>';
 		}

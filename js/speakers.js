@@ -1,37 +1,16 @@
-/**
- * Script for the schedule
- *
- *
- * @package Canadian_Climate_Conference
- */
+    function filterSpeakers() {
+		var selectedIndustry = document.getElementById( 'industry-type' ).value;
+		var speakers         = document.getElementsByClassName( 'single-speaker' );
 
-function filterSpeakers() {
-    let eventSelected = document.getElementById("event-type");
-    let industrySelected = document.getElementById("industry-type");
-  
-    let selectedEvent = eventSelected.value;
-    let selectedIndustry = industrySelected.value;
-  
-    let events = document.getElementsByClassName("conference-speakers");
-  
-    // Display or hide based on selection
-    for (let i = 0; i < events.length; i++) {
-      let event = events[i];
-  
-      // Either conditions need to be met
-      if (
-        selectedIndustry === "all" ||
-        event.classList.contains(selectedIndustry)
-      ) {
-        event.style.display = "block";
-      } else {
-        event.style.display = "none";
-      }
-  
-      // Both conditions need to be met
-      if (selectedEvent !== "all" && !event.classList.contains(selectedEvent)) {
-        event.style.display = "none";
-      }
-    }
-  }
-  
+		for ( var i = 0; i < speakers.length; i++ ) {
+			var speaker  = speakers[i];
+			var industry = speaker.getAttribute( 'data-industry' );
+
+			if ( selectedIndustry === 'all' || selectedIndustry === industry ) {
+				speaker.style.display = 'block';
+			} else {
+				speaker.style.display = 'none';
+			}
+		}
+	}
+
