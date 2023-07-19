@@ -45,4 +45,6 @@
     display: flex;
     justify-content: center;
     //BUTTON MIXIN HERE
+    @include call-to-action;
+    margin: 1rem auto;
 }

@@ -9,10 +9,6 @@
 //issue with `$` not registering despite script enqueuing, using `jQuery` until issue sorted
 jQuery(document).ready(function($){
 
-    // $ = jQuery;
-    // $hero = $('.hero-slider');
-    // $speaker = $('.speaker-slider');
-
     $('.hero-slider').slick({
         dots: false,
         infinite: true,
