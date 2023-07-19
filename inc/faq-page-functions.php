@@ -16,7 +16,7 @@ function faq_section($section_name, $post_id = false, $format_value = true)
 ?>
             <div class="accordion">
                 <strong>
-                    <h2><?php echo $field['label']; ?></h2>
+                    <h2 class="accordion-heading"><?php echo $field['label']; ?></h2>
                 </strong>
 
                 <div class="accordion-panel" id="accordion-panel-<?php echo $section_name; ?>">

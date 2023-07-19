@@ -4,6 +4,12 @@
         border: 1px solid $black;
         padding: 1rem;
     }
+    .accordion-heading {
+      margin: 3rem 0 1rem 0;
+    }
+    .gform_heading {
+      margin-top: 2rem;
+    }
 }
 // Accordion 
 .accordion {
@@ -56,7 +62,7 @@
 
   
   @media (min-width: 63.75rem) {
-    .faq-question-container {
+    .faq-question-container, .accordion-heading{
       width: 60rem;
       margin-left: auto;
       margin-right: auto;
@@ -64,4 +70,6 @@
       justify-content: center;
       align-items: center;
     }
+
+
   }
