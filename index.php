@@ -25,7 +25,7 @@ get_header();
 			?>
 			<header>
 				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				<h1 class="news-heading">News</h1> <!-- Add the news heading -->
+				<h1 class="news-heading">News</h1> 
 			</header>
 			<?php
 		endif;
@@ -40,7 +40,7 @@ get_header();
 					<div class="thumbnail-wrapper">
 						<?php if (has_post_thumbnail()) : ?>
 							<div class="post-thumbnail">
-								<?php the_post_thumbnail('large'); ?>
+								<?php the_post_thumbnail('full'); ?>
 							</div><!-- .post-thumbnail -->
 						<?php endif; ?>
 						<div class="entry-content-wrapper">
