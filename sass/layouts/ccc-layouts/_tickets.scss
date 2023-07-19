@@ -71,7 +71,31 @@ body.page-id-39 {
 }
 }
 
+// CTA buttons 
 
 a.button {
     @include call-to-action;
 }
+
+// CTA button color 
+.products {
+    .product_cat-general {
+        .button {
+            background-color: $color__call_to_action;
+
+        }
+    }
+    .product_cat-vip {
+        .button {
+            background-color: $secondary;
+            margin-top: 1rem;
+        }
+    }
+}
+
+
+    .post-24, .post-25 {
+        .button {
+            margin-top: 1rem;
+        }
+    }
