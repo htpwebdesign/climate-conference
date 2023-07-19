@@ -279,6 +279,33 @@ function my_acf_google_map_api($api)
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+/**
+ * Add Woocommerce Checkout Field filter changes
+ */
+add_filter( 'woocommerce_checkout_fields', 'custom_override_checkout_fields' );
+function custom_override_checkout_fields( $fields ) {
+
+	//remove each label, basecode from: 
+	//https://stackoverflow.com/questions/25442289/woocommerce-remove-all-form-labels-at-once
+	foreach ( $fields as $category => $value ) {
+		if ( is_array( $value )){
+			foreach ( $value as $field => $property ) {
+				//placeholder text as label before label unset
+				$fields[ $category ][ $field ][ 'placeholder' ] = ucfirst( $property[ 'label' ]);
+
+				unset( $fields[ $category ][ $field ][ 'label' ]);
+			}
+		}
+	}
+
+	unset( $fields[ 'billing' ][ 'billing_company' ]);
+
+	return $fields;
+
+}
+
+
+
 //image size for sponsors
 //add_image_size( 'sponsor', 415, 75, true );
 
