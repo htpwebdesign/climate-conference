@@ -19,3 +19,18 @@ input[type="submit"] {
 		border-color: $color__border-button-focus;
 	}
 }
+
+// Schedule button 
+.tablink {
+	padding: 1rem 3rem;
+	color: $primaryDark;
+	background-color: $light;
+	font-size: 1.5rem;
+	font-weight: bold;
+
+	&:hover {
+		background-color: $primaryDark;
+		color: $light;
+		transition: all ease-in-out 0.3s;
+	}
+}
