@@ -12,6 +12,9 @@ body.post-type-archive-conference-events {
   #event-type, #industry-type{
       border: 1px solid $primaryDark
   }
+  .speaker-link {
+    color: $black;
+  }
 }
 
 // .tab-container {
@@ -135,6 +138,13 @@ body.post-type-archive-conference-events {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media (min-width: 69rem) {
+  .page-header, .master-schedule-filter-container { 
+    width: 65rem;
+    margin: 0 auto;
   }
 }
 
