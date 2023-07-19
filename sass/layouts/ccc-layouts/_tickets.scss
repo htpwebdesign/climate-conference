@@ -99,3 +99,11 @@ a.button {
             margin-top: 1rem;
         }
     }
+
+@media (min-width: 78.875rem) {
+    .site-main {
+        #entry-title, .ticketClass {
+            margin-left: 2rem;
+        }
+    }
+}

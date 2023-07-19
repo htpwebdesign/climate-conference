@@ -190,7 +190,9 @@ get_header();
                                     <?php
                                     if ($event_speakers) {
                                         foreach ($event_speakers as $speaker) {
-                                            echo get_the_title($speaker);
+                                            $speaker_title = get_the_title($speaker);
+                                            $speaker_permalink = get_permalink($speaker);
+                                            echo '<a class="speaker-link" href="' . $speaker_permalink . '">' . $speaker_title . '</a>';
                                         }
                                     }
                                     ?>
