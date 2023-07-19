@@ -1,0 +1,24 @@
+
+  @media screen and (min-width: 768px) {
+	.thumbnail-wrapper {
+		display: flex;
+        margin-left: 10rem;
+        margin-top: 5rem;
+	}
+
+	.thumbnail-wrapper .post-thumbnail {
+		flex: 0 0 30%; /* Adjust the width of the thumbnail as needed */
+		margin-right: 1rem; /* Add spacing between the thumbnail and content */
+	}
+
+	.thumbnail-wrapper .entry-content-wrapper {
+		flex: 1;
+	}
+
+	.thumbnail-wrapper .entry-content {
+		margin-top: 0.5rem; /* Add spacing between the title and content */
+	}
+    .thumbnail-wrapper .entry-content p, h2 {
+        width: 60%;
+    }
+}
