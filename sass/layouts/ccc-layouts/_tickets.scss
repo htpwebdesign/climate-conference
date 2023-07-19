@@ -58,3 +58,19 @@ body.page-id-39 {
         }
     }
 }
+
+
+
+@media (min-width: 63.75rem) {
+    body.page-id-39 {
+        li.product.type-product {
+            max-width: 24rem;
+        }
+}
+}
+
+
+a.button {
+    @include call-to-action;
+}
+
