@@ -1,38 +1,89 @@
 .speaker-info {
     display: flex;
     align-items: center;
-    margin-left: 6rem;
     padding: 3rem;
+  }
   
-    .speaker-info-acf {
-        width: 50%;
+  .speaker-info-acf {
+    width: 50%;
+  }
+  
+  .portrait {
+    flex: 0 0 auto;
+    margin-right: 20px;
+  }
+  
+  .portrait img {
+    border-radius: 50%;
+    border: 1px solid #5D8001;
+  }
+  
+  .speaker-details {
+    flex: 1 1 auto;
+  }
+  
+  .post-navigation {
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .post-navigation .nav-previous,
+  .post-navigation .nav-next {
+    display: inline-block;
+  }
+  .post-navigation .nav-previous a,
+.post-navigation .nav-next a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Set text color to black */
+}
+  
+  @media (max-width: 700px) {
+    .speaker-info {
+      flex-direction: column;
     }
-
+  
     .portrait {
-        flex: 0 0 auto;
-        margin-right: 20px;
-
-        img {
-            border-radius: 50%;
-            border: 1px solid #5D8001;
-        }
+      margin-right: 0;
+      margin-bottom: 20px;
     }
 
-    .speaker-details {
-        flex: 1 1 auto;
+    .speaker-info-acf {
+        width: 100%;
     }
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-
-        .portrait {
-            margin-right: 0;
-            margin-bottom: 20px;
-        }
+    .post-navigation .nav-previous,
+  .post-navigation .nav-next {
+    margin: 0.5rem 2rem; 
+  }
+    
+  }
+  
+  @media (min-width: 701px) and (max-width:1000px) {
+    .post-navigation .nav-previous,
+    .post-navigation .nav-next {
+      margin: 0.5rem 8rem; 
     }
-}
+    .job-title-and-company {
+        margin-left: 4rem;
+        padding-top: 0.5rem;
+      }
+  }
+  @media (min-width: 1001px) {
+    .speaker-info {
+    display: flex;
+    justify-content: center;
+      }
+      .job-title-and-company {
+        margin-left: 12rem;
+        padding-top: 0.5rem;
+      }
 
-.job-title-and-company {
-    margin-left: 7rem;
-}
-
+ .post-navigation  {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+    margin-left: 6rem;
+  }
+  }
