@@ -7,10 +7,12 @@
     margin-bottom: 1rem;
 }
 
+.section { 
+    border: 1px solid black;
+}
 
 
 .single-product-main {
-    // text-align: center;
     .woocommerce-product-gallery {
         // width: 100%;
         margin-bottom: 1rem;
@@ -26,11 +28,9 @@
     }
 }
 
+
+
 // Media Query 
-
-@media (min-width: 20rem) {
-
-}
 
 @media (max-width: 55.31rem) {
     .single-product-main {
@@ -58,9 +58,11 @@
     }
     .products .columns-3 {
         display: flex;
+        border: 1px solid black;
         li {
             margin-right: 2rem;
         }
     }
 
 }
+
