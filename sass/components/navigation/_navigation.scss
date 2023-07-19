@@ -1,7 +1,7 @@
 .main-navigation {
 	display: block;
 	width: 100%;
-	
+
 	ul {
 		display: none;
 		list-style: none;
@@ -12,23 +12,22 @@
 			position: absolute;
 			top: 100%;
 			left: -999em;
-			background-color: $primaryLight;
-		}
-
-		li.focus > ul,
-		li.toggled > ul {
-			position: static;
 		}
 	}
 
 	li {
 		position: relative;
 	}
-	
+
 	a {
 		display: block;
 		text-decoration: none;
 	}
+}
+
+.main-navigation ul li.focus > ul,
+.main-navigation ul li.toggled > ul {
+	position: static;
 }
 
 .menu-toggle,
@@ -37,29 +36,37 @@
 }
 
 @media screen and (min-width: 57em) {
-
-	.menu-toggle {
-		display: none;
-	}
-
-	.main-navigation ul {
-		display: flex;
-		justify-content: flex-end;
-	}
-
-
-	.main-navigation ul ul {
-		float: left;
-		z-index: 99999;
-		background-color: $primaryDark;
+	.main-navigation {
+		ul {
+			display: flex;
+			justify-content: flex-end;
+			ul {
+				background-color: $primaryDark;
+				float: left;
+				z-index: 99999;
+				
+				a {
+					width: 200px;
+				}
+			}
+		}
 	}
 
 	.main-navigation ul li:hover > ul,
 	.main-navigation ul li.focus > ul,
 	.main-navigation ul li.toggled > ul {
 		position: absolute;
-		top: 5.1rem;
 		left: auto;
 	}
-}
 
+	.main-navigation ul ul li:hover > ul,
+	.main-navigation ul ul li.focus > ul {
+		display: block;
+		left: auto;
+	}
+
+	.menu-toggle,
+	.sub-menu-toggle {
+		display: none;
+	}
+}
