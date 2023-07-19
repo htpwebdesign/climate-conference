@@ -10,9 +10,9 @@
 
 
 .single-product-main {
-    text-align: center;
+    // text-align: center;
     .woocommerce-product-gallery {
-        width: 100%;
+        // width: 100%;
         margin-bottom: 1rem;
     }
     .product-description {
@@ -24,4 +24,43 @@
     .price {
         font-size: 1.2rem;
     }
+}
+
+// Media Query 
+
+@media (min-width: 20rem) {
+
+}
+
+@media (max-width: 55.31rem) {
+    .single-product-main {
+        text-align: center;
+        margin: 2rem;
+        .woocommerce-product-gallery {
+            width: 100%;
+        }
+        label.required-field { 
+            width: 100%;
+        }
+    }
+}
+
+
+@media (min-width: 55.31rem) {
+    .cart {
+        width: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .woocommerce-product-gallery {
+        width: 50%;
+    }
+    .products .columns-3 {
+        display: flex;
+        li {
+            margin-right: 2rem;
+        }
+    }
+
 }
