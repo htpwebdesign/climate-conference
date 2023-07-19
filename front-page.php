@@ -33,7 +33,7 @@ get_header(); ?>
                         foreach ( $images as $image ) :
     
                             $image_id = $image['ID'];
-                            $image_attachment = wp_get_attachment_image( $image_id, 'full' ); 
+                            $image_attachment = wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'skip-lazy' ) ); 
                             echo $image_attachment; 
     
                         endforeach; ?>

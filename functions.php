@@ -304,6 +304,18 @@ function custom_override_checkout_fields( $fields ) {
 
 }
 
+/**
+ * Skip lazy loading for hero section
+ */
+function disable_lazy_load_for_specific_images($attr, $attachment, $size) {
+    if (strpos($attr['class'], 'skip-lazy') !== false) {
+        $attr['loading'] = 'eager';
+    }
+
+    return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'disable_lazy_load_for_specific_images', 10, 3);
+
 
 
 //image size for sponsors
