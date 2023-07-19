@@ -27,7 +27,7 @@
       .arrow {
         width: 24px;
         height: 24px;
-        fill: #000;
+        fill: $black;
         transition: transform 0.3s ease-in-out;
         transform: rotate(180deg); /* Initial rotation */
       }

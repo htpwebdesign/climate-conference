@@ -76,8 +76,10 @@ get_header();
                 <div class="tab-container">
                     <button class="tablink tablink-1" onclick="openTab(event, 'day1')">Day 1</button>
                     <button class="tablink" onclick="openTab(event, 'day2')">Day 2</button>
+                    <hr class="day-line">
                 </div>
             </div>
+
 
             <!-- Industry -->
             <div class="schedule-filter-options">
