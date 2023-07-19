@@ -121,13 +121,34 @@
 }
 
 .hero-lower-subtext {
-
-    margin: 0 auto;
+    margin: 2rem auto;
     width: 70%;
-
-    :first-child {
-        margin-top: 2rem;
+    @media(min-width: 48rem) {
+        
+        display: grid;
+        grid-template-areas: 
+            "text1 text2"
+            "button button";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 2rem;
+    
+        :first-child {
+            grid-area: text1;
+        }
+    
+        :nth-child(2) {
+            grid-area: text2;
+        }
+    
+        .call-to-action {
+            grid-area: button;
+            grid-row: span 2;
+            margin-top: 0;
+            
+        }
     }
+
 }
 
 .featured-industry-section {
@@ -154,7 +175,7 @@
     
         @media (min-width: 48rem) {
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: center;
     
         }
     
@@ -163,7 +184,7 @@
             height: 10rem;
             display: flex;
             align-self: center;
-            margin: .5rem 1rem;
+            margin: .5rem 3rem;
     
             a {
                 text-decoration: none;
