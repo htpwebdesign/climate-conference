@@ -33,7 +33,7 @@ get_header(); ?>
                         foreach ( $images as $image ) :
     
                             $image_id = $image['ID'];
-                            $image_attachment = wp_get_attachment_image( $image_id, 'full' ); 
+                            $image_attachment = wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'skip-lazy' ) ); 
                             echo $image_attachment; 
     
                         endforeach; ?>
@@ -87,7 +87,7 @@ get_header(); ?>
         <div class="cta-container"> <?php
             $call_to_action_2 = get_field( 'call_to_action_2' );
             if ( $call_to_action_2 ) : ?>
-                <a class="call-to-action" href="<?php esc_url( $call_to_action_2[ 'url' ] ) ?>"> <?php 
+                <a class="call-to-action" href="<?php echo esc_url( $call_to_action_2[ 'url' ] ) ?>"> <?php 
                     echo esc_html( $call_to_action_2[ 'title' ] ) ?>
                 </a> <?php
             endif;
@@ -96,7 +96,7 @@ get_header(); ?>
             if ( get_field( 'call_to_action_3' ) ) : 
                 $call_to_action_3 = get_field( 'call_to_action_3' ); ?>
     
-                <a class="call-to-action" href="<?php esc_url( $call_to_action_3[ 'url' ] ) ?>"> <?php 
+                <a class="call-to-action" href="<?php echo esc_url( $call_to_action_3[ 'url' ] ) ?>"> <?php 
                     echo esc_html( $call_to_action_3[ 'title' ] ) ?>
                 </a> <?php
             endif; ?>
@@ -126,7 +126,7 @@ get_header(); ?>
         if ( get_field( 'call_to_action_4' ) ) : 
             $call_to_action_4 = get_field( 'call_to_action_4' );?>
 
-            <a class="call-to-action" href="<?php esc_url( $call_to_action_4[ 'url' ] ) ?>"><?php 
+            <a class="call-to-action" href="<?php echo esc_url( $call_to_action_4[ 'url' ] ) ?>"><?php 
                 echo esc_html( $call_to_action_4[ 'title' ] ) ?>
             </a> <?php
         endif; ?>
