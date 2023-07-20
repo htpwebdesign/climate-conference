@@ -1,9 +1,5 @@
 #gform_wrapper_2,
 #gform_wrapper_3 {
-    margin: 0 2rem;
-    display: grid;
-    grid-template-columns: minmax(0, 42em);
-    justify-content: center;
 
     input[type=submit]{
         background-color: $secondary;
@@ -11,8 +7,10 @@
         font-size: 1rem;
         outline: none;
         padding: 0.5rem 1rem;
+        margin: 0;
         border: none;
         border-radius: 25px;
+        text-align: left;
     }
 }
 
