@@ -1,20 +1,5 @@
-.tppdil_description {
-    display: none;
-}
-
-
-.single_add_to_cart_button {
-    margin-bottom: 1rem;
-}
-
-.section { 
-    border: 1px solid black;
-}
-
-
 .single-product-main {
     .woocommerce-product-gallery {
-        // width: 100%;
         margin-bottom: 1rem;
     }
     .product-description {
@@ -26,11 +11,60 @@
     .price {
         font-size: 1.2rem;
     }
+    .single_add_to_cart_button {
+        margin-bottom: 1rem;
+        @include call-to-action;
+        margin: 0 auto;
+    }
+    .tppdil_description {
+        display: none;
+    }
+    .qty {
+        width: 3rem;
+        text-align: center;
+    }
+    .woocommerce-product-gallery__image {
+        img {
+            border-radius: 2rem;
+        }
+    }
 }
 
 
 
 // Media Query 
+
+@media (min-width: 20rem) {
+    .products .columns-3
+        
+        .product_cat-general { 
+            background-color: $generalTickets;
+            border-radius: 2rem;
+            width: 15em;
+   
+        
+        }
+        .product_cat-vip {
+            background-color: $vipTickets;
+            border-radius: 2rem;
+            width: 15rem;
+          
+        } 
+        .button {
+            margin: 1rem auto;
+        }
+       
+        li {
+            padding: 1rem 2rem;
+        }
+    }
+    .products .columns-4 { 
+        li {
+            padding: 1rem 2rem;
+            width: 15rem;
+        }
+    }
+
 
 @media (max-width: 55.31rem) {
     .single-product-main {
@@ -48,21 +82,26 @@
 
 @media (min-width: 55.31rem) {
     .cart {
-        width: 50%;
+        width: 40%;
         position: absolute;
         top: 0;
         right: 0;
+        margin-right: 2rem;
+    }
+    .product_title {
+        width: 50%;
     }
     .woocommerce-product-gallery {
         width: 50%;
     }
+
     .products .columns-3 {
         display: flex;
-        border: 1px solid black;
-        li {
-            margin-right: 2rem;
-        }
+        width: 50rem;
+        margin-bottom: 2rem;
+       .product {
+        margin: 0 1rem 0 1rem;
+       }
     }
-
 }
 
