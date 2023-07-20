@@ -35,6 +35,19 @@
 	display: block;
 }
 
+.main-navigation {
+	ul {
+		li {
+			a {
+				&:hover {
+					background-color: $secondary;
+					transition: all ease-in-out 0.3s;
+				}
+			}
+		}
+	}
+}
+
 @media screen and (min-width: 57em) {
 	.main-navigation {
 		ul {
