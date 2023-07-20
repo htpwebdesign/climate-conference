@@ -7,12 +7,6 @@
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
-
-		ul {
-			position: absolute;
-			top: 100%;
-			left: -999em;
-		}
 	}
 
 	li {
@@ -56,7 +50,10 @@
 			ul {
 				background-color: $primaryDark;
 				float: left;
-				z-index: 99999;
+				z-index: 1000;
+				position: absolute;
+				top: 100%;
+				left: -999em;
 				
 				a {
 					width: 200px;
@@ -69,6 +66,7 @@
 	.main-navigation ul li.focus > ul,
 	.main-navigation ul li.toggled > ul {
 		position: absolute;
+		z-index: 1000;
 		left: auto;
 	}
 
