@@ -46,6 +46,14 @@
         outline: none;
         cursor: pointer;
         position: relative;
+        padding: 8px;
+        width: 100%;
+        transition: border 0.3s, box-shadow 0.3s; 
+            
+      &:focus {
+        border: 1px solid $focus;
+        box-shadow: 0 0 3px $focus;
+      }
       }
       
       .arrow-faq {
