@@ -19,14 +19,14 @@ function filterSchedule() {
     let event = events[i];
 
     // Either conditions need to be met
-    // if (
-    //   selectedIndustry === "all" ||
-    //   event.classList.contains(selectedIndustry)
-    // ) {
-    //   event.style.display = "block";
-    // } else {
-    //   event.style.display = "none";
-    // }
+    if (
+      selectedIndustry === "all" ||
+      event.classList.contains(selectedIndustry)
+    ) {
+      event.style.display = "block";
+    } else {
+      event.style.display = "none";
+    }
 
     // Both conditions need to be met
     if (selectedEvent !== "all" && !event.classList.contains(selectedEvent)) {

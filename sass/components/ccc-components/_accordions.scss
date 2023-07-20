@@ -7,9 +7,11 @@
   
     .event-details {
       flex-grow: 1;
-  
+      text-align: center;
+    
       .start-time {
         margin-bottom: 5px;
+        text-align: center;
       }
   
       .event-title {
@@ -23,13 +25,15 @@
       outline: none;
       cursor: pointer;
       position: relative;
+      width: 100%;
   
       .arrow {
         width: 24px;
         height: 24px;
         fill: $black;
         transition: transform 0.3s ease-in-out;
-        transform: rotate(180deg); /* Initial rotation */
+        transform: rotate(180deg); 
+        // Right side rotation 
       }
     }
   
@@ -40,7 +44,8 @@
         display: block;
   
         .arrow {
-          transform: rotate(0deg); /* Rotate 180 degrees on open */
+          transform: rotate(0deg); 
+          // Rotate on open 
         }
       }
     }
