@@ -308,12 +308,13 @@ function custom_override_checkout_fields($fields)
 /**
  * Skip lazy loading for hero section
  */
-function disable_lazy_load_for_specific_images($attr, $attachment, $size) {
-    if (strpos($attr['class'], 'skip-lazy') !== false) {
-        $attr['loading'] = 'eager';
-    }
+function disable_lazy_load_for_specific_images($attr, $attachment, $size)
+{
+	if (strpos($attr['class'], 'skip-lazy') !== false) {
+		$attr['loading'] = 'eager';
+	}
 
-    return $attr;
+	return $attr;
 }
 add_filter('wp_get_attachment_image_attributes', 'disable_lazy_load_for_specific_images', 10, 3);
 
@@ -354,3 +355,6 @@ remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pro
 
 // Remove category 
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+
+// Remove upsell 
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
