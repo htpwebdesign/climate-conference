@@ -371,3 +371,40 @@ function move_description_under_price()
 }
 
 add_action('woocommerce_before_shop_loop', 'move_description_under_price');
+
+//Login page customization
+function ccc_login_logo() { ?>
+	<style type="text/css">
+		#login h1 a,
+		.login h1 a {
+			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/ccc-favicon.png);
+			height: 129px;
+			width: 129px;
+			background-size: 129px 129px;
+			background-repeat: no-repeat;
+			padding-bottom: 0.5rem;
+		}
+	</style>
+<?php }
+add_action( 'login_enqueue_scripts', 'ccc_login_logo');
+
+//Link logo to home page
+function ccc_logo_url() {
+	return home_url();
+}
+add_filter( 'login_headerurl', 'ccc_logo_url');
+
+//Custom stylesheet for login page
+function ccc_login_stylesheet(){
+	wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/style-login.css');
+}
+add_action( 'login_enqueue_scripts', 'ccc_login_stylesheet');
+
+//Remove dashboard widgets
+function ccc_remove_dash_widgets() {
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
+	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+}
+add_action( 'wp_dashboard_setup', 'ccc_remove_dash_widgets');
