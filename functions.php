@@ -57,6 +57,7 @@ function climate_conference_setup()
 	register_nav_menus(
 		array(
 			'header' => esc_html__('Main Navigation', 'climate-conference'),
+			'footer' => esc_html__('Portfolios', 'climate-conference'),
 		)
 	);
 
@@ -282,37 +283,38 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 /**
  * Add Woocommerce Checkout Field filter changes
  */
-add_filter( 'woocommerce_checkout_fields', 'custom_override_checkout_fields' );
-function custom_override_checkout_fields( $fields ) {
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
+function custom_override_checkout_fields($fields)
+{
 
 	//remove each label, basecode from: 
 	//https://stackoverflow.com/questions/25442289/woocommerce-remove-all-form-labels-at-once
-	foreach ( $fields as $category => $value ) {
-		if ( is_array( $value )){
-			foreach ( $value as $field => $property ) {
+	foreach ($fields as $category => $value) {
+		if (is_array($value)) {
+			foreach ($value as $field => $property) {
 				//placeholder text as label before label unset
-				$fields[ $category ][ $field ][ 'placeholder' ] = ucfirst( $property[ 'label' ]);
+				$fields[$category][$field]['placeholder'] = ucfirst($property['label']);
 
-				unset( $fields[ $category ][ $field ][ 'label' ]);
+				unset($fields[$category][$field]['label']);
 			}
 		}
 	}
 
-	unset( $fields[ 'billing' ][ 'billing_company' ]);
+	unset($fields['billing']['billing_company']);
 
 	return $fields;
-
 }
 
 /**
  * Skip lazy loading for hero section
  */
-function disable_lazy_load_for_specific_images($attr, $attachment, $size) {
-    if (strpos($attr['class'], 'skip-lazy') !== false) {
-        $attr['loading'] = 'eager';
-    }
+function disable_lazy_load_for_specific_images($attr, $attachment, $size)
+{
+	if (strpos($attr['class'], 'skip-lazy') !== false) {
+		$attr['loading'] = 'eager';
+	}
 
-    return $attr;
+	return $attr;
 }
 add_filter('wp_get_attachment_image_attributes', 'disable_lazy_load_for_specific_images', 10, 3);
 
@@ -350,3 +352,19 @@ remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pro
 
 // Remove description 
 remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_excerpt', 10);
+
+// Remove category 
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+
+// Remove upsell 
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
+
+
+// Description under price
+function move_description_under_price()
+{
+	remove_action('woocommerce_after_shop_loop_item_title', 'tppdil_description', 20);
+	add_action('woocommerce_after_shop_loop_item_title', 'tppdil_description', 30);
+}
+
+add_action('woocommerce_before_shop_loop', 'move_description_under_price');

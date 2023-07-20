@@ -30,6 +30,7 @@
     if ( $featured_industries->have_posts() ) : ?>
 
         <section class="featured-industry-section">
+            <h2 class="featured-industry-title">Featured Industries:</h2>
             <nav class="featured-industry-nav"> <?php
         
                 while ( $featured_industries->have_posts() ) : 

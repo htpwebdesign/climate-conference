@@ -70,9 +70,8 @@ get_header();
 							$image = get_field('logo');
 							$size = 'medium';
 							if($image) {
-								echo wp_get_attachment_image( $image, $size );
+								echo wp_get_attachment_image($image, $size);
 							}
-
 							
 
 							$link = get_field('link');

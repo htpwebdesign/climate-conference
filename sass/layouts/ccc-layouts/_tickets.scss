@@ -1,109 +1,109 @@
-body.page-id-39 {
-    li.product.type-product {
-        margin: 0 1rem 1rem 1rem;
-        padding: 1rem;
-        border-radius: 2rem;
-        a.woocommerce-LoopProduct-link {
-            .woocommerce-loop-product__title {
-                text-decoration: none !important;
-                color: $black;
+    body.page-id-39 {
+        li.product.type-product {
+            margin: 0 1rem 1rem 1rem;
+            padding: 1rem;
+            border-radius: 2rem;
+            a.woocommerce-LoopProduct-link {
+                .woocommerce-loop-product__title {
+                    text-decoration: none !important;
+                    color: $black;
+                }
+            }
+            .product-price, .product-description{ 
+                margin-bottom: 0.5rem;
             }
         }
-        .product-price, .product-description{ 
-            margin-bottom: 0.5rem;
+        .price{
+            text-decoration: none;
         }
-    }
-    .price{
-        text-decoration: none;
-    }
-    // Ticket Color 
-    .product_cat-general { 
-        background-color: $generalTickets;
-    }
-    .product_cat-vip {
-        background-color: $vipTickets;
-    } 
-    .tppdil_description { 
-        display: none;
-    }
-    // How to remove this 
-}
-
-// Media Queries 
-@media (min-width: 20rem) {
-    .site-main {
-        #entry-title, .ticketClass {
-            margin: 1rem;
+        // Ticket Color 
+        .product_cat-general { 
+            background-color: $generalTickets;
         }
-    }
-}
-
-@media (min-width: 30rem) {
-    body.page-id-39 {
-        li.product.type-product {
-            width: 25rem;
-            margin: 1rem auto 1rem auto;
-            
+        .product_cat-vip {
+            background-color: $vipTickets;
+        } 
+        .tppdil_description { 
+            display: none;
         }
+        // How to remove this 
     }
-}
 
-@media (min-width: 48rem) {
-    body.page-id-39 {
-        li.product.type-product {
-            width: auto;
-        }
-    
-    ul.products.columns-4 { 
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr;
-        grid-column-gap: 1.5rem;
-    }
-}
-}
-
-@media (min-width: 63.75rem) {
-    body.page-id-39 {
-        li.product.type-product {
-            max-width: 24rem;
-        }
-}
-}
-
-// CTA buttons 
-
-a.button {
-    @include call-to-action;
-}
-
-// CTA button color 
-.products {
-    .product_cat-general {
-        .button {
-            background-color: $color__call_to_action;
-
-        }
-    }
-    .product_cat-vip {
-        .button {
-            background-color: $secondary;
-            margin-top: 1rem;
-        }
-    }
-}
-
-
-    .post-24, .post-25 {
-        .button {
-            margin-top: 1rem;
+    // Media Queries 
+    @media (min-width: 20rem) {
+        .site-main {
+            #entry-title, .ticketClass {
+                margin: 1rem;
+            }
         }
     }
 
-@media (min-width: 78.875rem) {
-    .site-main {
-        #entry-title, .ticketClass {
-            margin-left: 2rem;
+    @media (min-width: 30rem) {
+        body.page-id-39 {
+            li.product.type-product {
+                width: 25rem;
+                margin: 1rem auto 1rem auto;
+                
+            }
         }
     }
-}
+
+    @media (min-width: 48rem) {
+        body.page-id-39 {
+            li.product.type-product {
+                width: auto;
+            }
+        
+        ul.products.columns-4 { 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            grid-column-gap: 1.5rem;
+        }
+    }
+    }
+
+    @media (min-width: 63.75rem) {
+        body.page-id-39 {
+            li.product.type-product {
+                max-width: 24rem;
+            }
+    }
+    }
+
+    // CTA buttons 
+
+    a.button {
+        @include call-to-action;
+    }
+
+    // CTA button color 
+    .products {
+        .product_cat-general {
+            .button {
+                background-color: $color__call_to_action;
+
+            }
+        }
+        .product_cat-vip {
+            .button {
+                background-color: $secondary;
+                margin-top: 1rem;
+            }
+        }
+    }
+
+
+        .post-24, .post-25 {
+            .button {
+                margin-top: 1rem;
+            }
+        }
+
+    @media (min-width: 78.875rem) {
+        .site-main {
+            #entry-title, .ticketClass {
+                margin-left: 2rem;
+            }
+        }
+    }
