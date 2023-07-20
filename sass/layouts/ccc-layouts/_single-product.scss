@@ -41,6 +41,7 @@
                 background-color: $generalTickets;
                 border-radius: 2rem;
                 width: 15em;
+                padding: 1rem 2rem;
     
             
             }
@@ -48,21 +49,13 @@
                 background-color: $vipTickets;
                 border-radius: 2rem;
                 width: 15rem;
+                padding: 1rem 2rem;
             
             } 
             .button {
                 margin: 1rem auto;
             }
         
-            li {
-                padding: 1rem 2rem;
-            }
-        }
-        .products .columns-4 { 
-            li {
-                padding: 1rem 2rem;
-                width: 15rem;
-            }
         }
 
 
