@@ -25,3 +25,20 @@
     width: 80%;
     padding-bottom: 1rem;
 }
+
+  /* Center the list items within the <ul> or <ol> */
+.site-main-news .entry-content ul,
+.site-main-news .entry-content ol {
+  text-align: center;
+  margin: 0 auto;
+  width: 80%; 
+
+
+}
+
+/* Remove the display: flex property from list items */
+.site-main-news .entry-content li {
+  display: list-item; 
+  list-style-position: inside; 
+  padding-bottom: 1rem;
+}
