@@ -1,6 +1,14 @@
     .single-product-main {
+
+        max-width: 48rem;
+        margin: 2rem auto;
+
         .woocommerce-product-gallery {
             margin-bottom: 1rem;
+            
+            a.woocommerce-product-gallery__trigger {
+                display: none !important;
+            }
         }
         .product-description {
             display: none;
@@ -28,6 +36,7 @@
                 border-radius: 2rem;
             }
         }
+        
     }
 
 

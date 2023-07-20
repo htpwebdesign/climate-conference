@@ -1,5 +1,11 @@
-.checkout-page {
+#post-19 {
     display: grid;
+
+    h1.entry-title {
+        display: block;
+        width: fit-content;
+        margin: 1rem auto;
+    }
 
     @media (min-width: 37rem) {
         .checkout {
@@ -66,9 +72,6 @@
             list-style: none;
         }
 
-        label {
-            display: none;
-        }
     }
 }
 
