@@ -358,3 +358,13 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 
 // Remove upsell 
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
+
+
+// Description under price
+function move_description_under_price()
+{
+	remove_action('woocommerce_after_shop_loop_item_title', 'tppdil_description', 20);
+	add_action('woocommerce_after_shop_loop_item_title', 'tppdil_description', 30);
+}
+
+add_action('woocommerce_before_shop_loop', 'move_description_under_price');
