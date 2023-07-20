@@ -1,48 +1,50 @@
 <?php
 /**
- * The Template for displaying product archives, including the main shop page which is a post type archive
+ * The template for displaying ticket pages
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
- * @version 3.4.0
+ * @package Canadian_Climate_Conference
  */
-
-defined( 'ABSPATH' ) || exit;
 
 get_header();
-
-/**
- * Hook: woocommerce_before_main_content.
- *
- * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
- * @hooked woocommerce_breadcrumb - 20
- * @hooked WC_Structured_Data::generate_website_data() - 30
- */
-do_action( 'woocommerce_before_main_content' );
-
 ?>
-<section class="woocommerce-products-header checkout-page">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
+
+<main id="primary" class="site-main">
 
 	<?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	do_action( 'woocommerce_archive_description' );
+	while (have_posts()) :
+		the_post();
+
+		echo "<h1 id='entry-title'>Tickets</h1>";
+
+		// Display Tickets 
+		if (class_exists('WooCommerce')) {
+			// Display General Admission tickets
+			echo "<h2 class='ticketClass'>General</h2>";
+			echo do_shortcode('[products category="general"]');
+
+			// Display VIP tickets
+			echo "<h2 class='ticketClass'>VIP</h2>";
+			echo do_shortcode('[products category="vip"]');
+		}
+
+		// If comments are open or we have at least one comment, load up the comment template.
+		if (comments_open() || get_comments_number()) :
+			comments_template();
+		endif;
+
+	endwhile; // End of the loop.
 	?>
-</section> <?php
+
+</main>
+
+<?php
 
 get_footer();
+?>
