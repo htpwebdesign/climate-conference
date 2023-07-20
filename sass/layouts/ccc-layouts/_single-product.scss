@@ -1,111 +1,106 @@
-    .single-product-main {
+.single-product-main {
 
-        max-width: 48rem;
-        margin: 2rem auto;
+    max-width: 48rem;
+    margin: 2rem auto;
 
-        .woocommerce-product-gallery {
-            margin-bottom: 1rem;
-            
-            a.woocommerce-product-gallery__trigger {
-                display: none !important;
-            }
-        }
-        .product-description {
-            display: none;
-        }
-        .tabs {
-            display: none;
-        }
-        .price {
-            font-size: 1.2rem;
-        }
-        .single_add_to_cart_button {
-            margin-bottom: 1rem;
-            @include call-to-action;
-            margin: 0 auto;
-        }
-        .tppdil_description {
-            display: none;
-        }
-        .qty {
-            width: 3rem;
-            text-align: center;
-        }
-        .woocommerce-product-gallery__image {
-            img {
-                border-radius: 2rem;
-            }
-        }
+    .woocommerce-product-gallery {
+        margin-bottom: 1rem;
         
+        a.woocommerce-product-gallery__trigger {
+            display: none !important;
+        }
     }
-
-
-
-    // Media Query 
-
-    @media (min-width: 20rem) {
-        .products .columns-3
-            
-            .product_cat-general { 
-                background-color: $generalTickets;
-                border-radius: 2rem;
-                width: 15em;
-                padding: 1rem 2rem;
+    .product-description {
+        display: none;
+    }
+    .tabs {
+        display: none;
+    }
+    .price {
+        font-size: 1.2rem;
+    }
+    .single_add_to_cart_button {
+        margin-bottom: 1rem;
+        @include call-to-action;
+        margin: 0 auto;
+    }
+    .tppdil_description {
+        display: none;
+    }
+    .qty {
+        width: 3rem;
+        text-align: center;
+    }
+    .woocommerce-product-gallery__image {
+        img {
+            border-radius: 2rem;
+        }
+    }
     
-            
-            }
-            .product_cat-vip {
-                background-color: $vipTickets;
-                border-radius: 2rem;
-                width: 15rem;
-                padding: 1rem 2rem;
-            
-            } 
-            .button {
-                margin: 1rem 0;
-            }
-        
-        }
+}
 
 
-    @media (max-width: 55.31rem) {
-        .single-product-main {
-            text-align: center;
-            margin: 2rem;
-            .woocommerce-product-gallery {
-                width: 100%;
-            }
-            label.required-field { 
-                width: 100%;
-            }
-        }
-    }
+
+.product_cat-general { 
+    background-color: $generalTickets;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    
+    
+}
+.product_cat-vip {
+    background-color: $vipTickets;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    
+} 
+.button {
+    margin: 1rem 0;
+}
 
 
-    @media (min-width: 55.31rem) {
-        .single-product-main {
-        .cart {
-            width: 40%;
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin-right: 2rem;
-        }
-        .product_title {
-            width: 50%;
-        }
+
+
+
+// Media Query 
+
+@media (max-width: 55.31rem) {
+    .single-product-main {
+        text-align: center;
+        margin: 2rem;
         .woocommerce-product-gallery {
-            width: 50%;
+            width: 100%;
         }
+        label.required-field { 
+            width: 100%;
+        }
+    }
+}
 
-        .products .columns-3 {
-            display: flex;
-            width: 50rem;
-            margin-bottom: 2rem;
-        .product {
-            margin: 0 1rem 0 1rem;
-        }
-        }
+
+@media (min-width: 55.31rem) {
+    .single-product-main {
+    .cart {
+        width: 40%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 2rem;
+    }
+    .product_title {
+        width: 50%;
+    }
+    .woocommerce-product-gallery {
+        width: 50%;
+    }
+
+    .products .columns-3 {
+        display: flex;
+        margin-bottom: 2rem;
+    .product {
+        margin: 0 1rem 0 1rem;
     }
     }
+}
+}
 
