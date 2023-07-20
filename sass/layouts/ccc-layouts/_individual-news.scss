@@ -26,6 +26,7 @@
     padding-bottom: 1rem;
 }
 
+
   /* Center the list items within the <ul> or <ol> */
 .site-main-news .entry-content ul,
 .site-main-news .entry-content ol {
@@ -42,3 +43,9 @@
   list-style-position: inside; 
   padding-bottom: 1rem;
 }
+
+.category-news {
+    max-width: 70em;
+    margin: 0 auto;
+}
+

@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+  margin: 0 2.5rem;
 
   .single-speaker {
     padding: 1rem;
@@ -19,6 +20,7 @@
 
     p {
       margin: 0;
+      text-align: center;
     }
   }
 }
