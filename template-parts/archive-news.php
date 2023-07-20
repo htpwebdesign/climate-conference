@@ -20,7 +20,7 @@ get_header();
             the_archive_title('<h1 class="page-title">', '</h1>');
             the_archive_description('<div class="archive-description">', '</div>');
             ?>
-        </header><!-- .page-header -->
+        </header>
 
     <?php
         /* Start the Loop */
@@ -45,7 +45,7 @@ get_header();
     endif;
     ?>
 
-</main><!-- #main -->
+</main>
 
 <?php
 get_footer();
