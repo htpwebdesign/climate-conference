@@ -401,10 +401,21 @@ function ccc_login_stylesheet(){
 add_action( 'login_enqueue_scripts', 'ccc_login_stylesheet');
 
 //Remove dashboard widgets
-function ccc_remove_dash_widgets() {
+function ccc_remove_dash_widgets(){
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
 	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
 	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
 	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
 }
 add_action( 'wp_dashboard_setup', 'ccc_remove_dash_widgets');
+
+//Content for guide widget
+function ccc_dash_widget_guide(){
+	esc_html_e("Add how to guide here", "textdomain");
+}
+
+//Add dashboard widgets
+function ccc_add_dash_widgets(){
+	wp_add_dashboard_widget('dashboard_widget', 'Guide to The Canadian Climate Conference Site', 'ccc_dash_widget_guide' );	
+}
+add_action( 'wp_dashboard_setup', 'ccc_add_dash_widgets');
