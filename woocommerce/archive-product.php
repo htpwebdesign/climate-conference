@@ -18,28 +18,27 @@ get_header();
 <main id="primary" class="site-main">
 
 	<?php
-	while (have_posts()) :
-		the_post();
 
-		echo "<h1 id='entry-title'>Tickets</h1>";
 
-		// Display Tickets 
-		if (class_exists('WooCommerce')) {
-			// Display General Admission tickets
-			echo "<h2 class='ticketClass'>General</h2>";
-			echo do_shortcode('[products category="general"]');
+	echo "<h1 id='entry-title'>Tickets</h1>";
 
-			// Display VIP tickets
-			echo "<h2 class='ticketClass'>VIP</h2>";
-			echo do_shortcode('[products category="vip"]');
-		}
+	// Display Tickets 
+	if (class_exists('WooCommerce')) {
+		// Display General Admission tickets
+		echo "<h2 class='ticketClass'>General</h2>";
+		echo do_shortcode('[products category="general"]');
 
-		// If comments are open or we have at least one comment, load up the comment template.
-		if (comments_open() || get_comments_number()) :
-			comments_template();
-		endif;
+		// Display VIP tickets
+		echo "<h2 class='ticketClass'>VIP</h2>";
+		echo do_shortcode('[products category="vip"]');
+	}
 
-	endwhile; // End of the loop.
+	// If comments are open or we have at least one comment, load up the comment template.
+	if (comments_open() || get_comments_number()) :
+		comments_template();
+	endif;
+
+
 	?>
 
 </main>
