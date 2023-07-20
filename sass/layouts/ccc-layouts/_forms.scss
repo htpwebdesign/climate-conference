@@ -1,6 +1,6 @@
 #gform_wrapper_2,
-#gform_wrapper_3 {
-
+#gform_wrapper_3,
+#gform_wrapper_4 {
     input[type=submit]{
         background-color: $secondary;
         color: white;
@@ -15,7 +15,8 @@
 }
 
 .post-281,
-.post-283{
+.post-283,
+#gform_wrapper_4{
     max-width: 48em;
     margin: 0 auto;
 }

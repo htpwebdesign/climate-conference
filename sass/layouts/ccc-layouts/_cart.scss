@@ -1,4 +1,7 @@
     .post-18 {
+        max-width: 50em;
+        margin: 0 auto;
+
         .product-thumbnail {
             display: flex;
             img { 
@@ -19,7 +22,6 @@
         }
         .woocommerce-message { 
             background-color: $light;
-            margin: 1rem 0 2rem 0;
             font-weight: bold;
             font-size: 1.2rem;
         }
@@ -29,7 +31,7 @@
     // Media Query
     @media (min-width: 20rem) {
         .post-18 {
-            margin-right: 1rem;
+            //margin-right: 1rem;
             img { 
                 width: 7rem;
             }

@@ -21,7 +21,6 @@
   // Media Query 
   @media (min-width: 20rem) {
     .site-main {
-      margin: 0 1rem;
 
       .tab-container {
         display: flex;
@@ -92,5 +91,10 @@
       width: 65rem;
       margin: 0 auto;
     }
+  }
+
+  body {
+    max-width: 120em;
+    margin: 0 auto;
   }
 
