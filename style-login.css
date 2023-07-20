@@ -1,0 +1,14 @@
+.login {
+    background-color: #2C365E;
+}
+
+#wp-submit {
+    background-color: #5D8001;
+    border: none;
+}
+
+.login #nav a,
+.login #backtoblog a,
+.dashicons{
+    color: white;
+}
