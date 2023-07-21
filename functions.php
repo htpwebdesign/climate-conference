@@ -261,7 +261,7 @@ if (class_exists('WooCommerce')) {
  */
 function ccc_editor_filter($use_block_editor, $post)
 {
-	$page_ids = array(33, 81, 79);
+	$page_ids = array(33, 81, 30, 79, 35, 19, 18);
 	if (in_array($post->ID, $page_ids)) {
 		return false;
 	} else {
