@@ -268,7 +268,6 @@ function ccc_editor_filter($use_block_editor, $post)
 		return $use_block_editor;
 	}
 }
-
 add_filter('use_block_editor_for_post', 'ccc_editor_filter', 10, 2);
 
 
@@ -427,4 +426,17 @@ function ccc_remove_admin_links() {
     	remove_menu_page( 'edit-comments.php' );
 	}
 }
-add_action( 'admin_menu', 'ccc_remove_admin_links' );
+
+// Move Yoast to bottom
+function ccc_yoasttobottom() {
+	return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'ccc_yoasttobottom');
+
+
+//Block editor styles
+add_theme_support( 'editor-styles' );
+function ccc_theme_add_editor_styles() {
+    add_editor_style( 'style-editor.css' );
+}
+add_action( 'admin_init', 'ccc_theme_add_editor_styles' );
