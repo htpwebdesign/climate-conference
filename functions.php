@@ -261,7 +261,7 @@ if (class_exists('WooCommerce')) {
  */
 function ccc_editor_filter($use_block_editor, $post)
 {
-	$page_ids = array(33, 81);
+	$page_ids = array(33, 81, 79);
 	if (in_array($post->ID, $page_ids)) {
 		return false;
 	} else {
@@ -409,13 +409,22 @@ function ccc_remove_dash_widgets(){
 }
 add_action( 'wp_dashboard_setup', 'ccc_remove_dash_widgets');
 
-//Content for guide widget
+//Content for guide widget - create a function for each widget
 function ccc_dash_widget_guide(){
 	esc_html_e("Add how to guide here", "textdomain");
 }
 
 //Add dashboard widgets
 function ccc_add_dash_widgets(){
+	//copy this for each widget
 	wp_add_dashboard_widget('dashboard_widget', 'Guide to The Canadian Climate Conference Site', 'ccc_dash_widget_guide' );	
 }
 add_action( 'wp_dashboard_setup', 'ccc_add_dash_widgets');
+
+// Remove admin menu links for non-Administrator accounts
+function ccc_remove_admin_links() {
+	if ( !current_user_can( 'manage_options' ) ) {
+    	remove_menu_page( 'edit-comments.php' );
+	}
+}
+add_action( 'admin_menu', 'ccc_remove_admin_links' );

@@ -45,7 +45,7 @@ function ccc_register_cpt()
         'hierarchical'       => false,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-schedule',
-        'supports'           => array('title', 'thumbnail', 'editor'),
+        'supports'           => array('title', 'thumbnail'),
         'order' => 'ASC',
     );
 
@@ -95,7 +95,7 @@ function ccc_register_cpt()
         'hierarchical'       => false,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-businessperson',
-        'supports'           => array('title', 'thumbnail', 'editor'),
+        'supports'            => array('title', 'thumbnail', 'excerpt', 'custom-fields'),
     );
 
     register_post_type('conference-sponsors', $args);
