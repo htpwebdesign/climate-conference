@@ -9,6 +9,7 @@
 //issue with `$` not registering despite script enqueuing, using `jQuery` until issue sorted
 jQuery(document).ready(function($){
 
+    //home page slider settings
     $('.hero-slider').slick({
         dots: false,
         infinite: true,
@@ -30,6 +31,8 @@ jQuery(document).ready(function($){
 
     })
 
+    //checks for window size width, if true, check to see if slick class applied, if also true, ensure set with slick settings. 
+    //if not, remove slider
     function handleSlick() {
         if ($(window).width() < 768) {
             if (!$('.speaker-slider').hasClass('slick-initialized')) {
