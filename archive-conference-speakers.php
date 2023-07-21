@@ -25,21 +25,24 @@
 
 	$speakers_query = new WP_Query($args);
 	?>
-	<label class="label" for="conference-industry-type">Industry: </label>
-	<select name="conference-industry-type" id="industry-type" onchange="filterSpeakers()">
-		<option value="all" <?php selected($selected_industry, 'all'); ?>>All</option>
-		<?php
-		$industry_terms = get_terms(array(
-			'taxonomy'   => 'conference-industry-type',
-			'hide_empty' => true,
-		));
+	<div class="speakers-filter">
+		<label class="label" for="conference-industry-type">Industry: </label>
+		<select name="conference-industry-type" id="industry-type" onchange="filterSpeakers()">
+			<option value="all" <?php selected($selected_industry, 'all'); ?>>All</option>
+			<?php
+			$industry_terms = get_terms(array(
+				'taxonomy'   => 'conference-industry-type',
+				'hide_empty' => true,
+			));
+	
+			foreach ($industry_terms as $term) {
+				$selected = selected($selected_industry, $term->slug, false);
+				echo '<option value="' . esc_attr($term->slug) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
+			}
+			?>
+		</select>
 
-		foreach ($industry_terms as $term) {
-			$selected = selected($selected_industry, $term->slug, false);
-			echo '<option value="' . esc_attr($term->slug) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
-		}
-		?>
-	</select>
+	</div>
 
 	<div class="all-speakers-container">
 		<?php
